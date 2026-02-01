@@ -1,0 +1,152 @@
+/* =========================
+   SECTION BACKGROUND
+========================= */
+.offer-section {
+  background: linear-gradient(180deg, #f2f4f6 0%, #eef2f6 100%);
+  padding: 5.5rem 2rem;
+}
+
+.offer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* =========================
+   HEADING + UNDERLINE
+========================= */
+.offer-title {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--black-graphite);
+  padding-bottom: 0.6rem;
+}
+
+.offer-underline {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--blue-primary);
+  transform: translateX(-50%);
+  transition: width 0.4s ease;
+}
+
+.offer-title:hover .offer-underline {
+  width: 90px;
+}
+
+/* Intro text */
+.offer-intro {
+  margin-top: 1rem;
+  max-width: 700px;
+  margin-inline: auto;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--grey-steel);
+}
+
+/* =========================
+   CARDS LAYOUT
+========================= */
+.offer-cards {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+/* =========================
+   CARD BASE
+========================= */
+.offer-card {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Shine layer (unchanged base) */
+.offer-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  transform: skewX(-20deg);
+}
+
+/* Slower, smoother shine */
+.offer-card:hover::before {
+  animation: shineSweep 2s cubic-bezier(0.22, 1, 0.4, 2) forwards;
+}
+
+@keyframes shineSweep {
+  from {
+    left: -80%;
+  }
+  to {
+    left: 130%;
+  }
+}
+
+/* Image */
+.offer-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+/* Hover lift */
+.offer-card:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 26px 54px rgba(0, 0, 0, 0.18);
+}
+
+.offer-card-content {
+  padding: 1.2rem 1.2rem;
+  text-align: left;
+}
+
+/* Title */
+.offer-card-content h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--black-graphite);
+}
+
+/* Subheading */
+.offer-card-content p {
+  margin-top: 0.7rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--grey-steel);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .offer-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-card img {
+    height: 220px;
+  }
+}
