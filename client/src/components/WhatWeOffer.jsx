@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import "../styles/whatWeOffer.css";
+
 import productDesignImg from "../assets/product-design.jpg";
 import prototypingImg from "../assets/prototyping.jpg";
+
+/* Motion-enabled Link */
+const MotionLink = motion(Link);
 
 const containerVariants = {
   hidden: {},
@@ -41,11 +46,11 @@ export default function WhatWeOffer() {
       >
         {/* Heading */}
         <motion.h2 className="offer-title" variants={fadeUpVariants}>
-          What We Offer
+          Our Solutions
           <span className="offer-underline" />
         </motion.h2>
 
-
+        {/* Intro */}
         <motion.p className="offer-intro" variants={fadeUpVariants}>
           Engineering-driven solutions for the automotive industry, covering the
           complete journey from concept to realization.
@@ -53,28 +58,37 @@ export default function WhatWeOffer() {
 
         {/* Cards */}
         <div className="offer-cards">
-          <motion.div className="offer-card" variants={fadeUpVariants}>
-          <img src={productDesignImg} alt="Product Design" />
-          <div className="offer-card-content">
-            <h3>Product Design</h3>
-            <p>
-              Concept-to-CAD engineering focused on performance, strength,
-              and manufacturability.
-            </p>
-          </div>
-        </motion.div>
+          {/* Product Design */}
+          <MotionLink
+            to="/services/product-design"
+            className="offer-card"
+            variants={fadeUpVariants}
+          >
+            <img src={productDesignImg} alt="Product Design" />
+            <div className="offer-card-content">
+              <h3>Product Design</h3>
+              <p>
+                Concept-to-CAD engineering focused on performance, strength, and
+                manufacturability.
+              </p>
+            </div>
+          </MotionLink>
 
-        <motion.div className="offer-card" variants={fadeUpVariants}>
-          <img src={prototypingImg} alt="Prototyping" />
-          <div className="offer-card-content">
-            <h3>Prototyping</h3>
-            <p>
-              Rapid CNC and validation workflows to bring designs into
-              real-world form.
-            </p>
-          </div>
-        </motion.div>
-
+          {/* Prototyping */}
+          <MotionLink
+            to="/services/prototyping"
+            className="offer-card"
+            variants={fadeUpVariants}
+          >
+            <img src={prototypingImg} alt="Prototyping" />
+            <div className="offer-card-content">
+              <h3>Prototyping</h3>
+              <p>
+                Rapid CNC and validation workflows to bring designs into
+                real-world form.
+              </p>
+            </div>
+          </MotionLink>
         </div>
       </motion.div>
     </section>

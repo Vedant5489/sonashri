@@ -1,8 +1,8 @@
 // Assets
 import heroVideo from "../assets/prototyping/hero-video.mp4";
-import cncImg from "../assets/prototyping/cnc.jpg";
-import validationImg from "../assets/prototyping/validation.jpg";
-import iterationImg from "../assets/prototyping/iteration.jpg";
+import cncImg from "../assets/prototyping/cnc.png";
+import validationImg from "../assets/prototyping/validation.png";
+import iterationImg from "../assets/prototyping/iteration.png";
 
 // Data
 export const prototypingData = {

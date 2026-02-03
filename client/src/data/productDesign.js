@@ -1,7 +1,7 @@
 import heroVideo from "../assets/product-design/hero-video.mp4";
-import conceptImg from "../assets/product-design/concept.jpg";
-import cadImg from "../assets/product-design/cad.jpg";
-import dfmImg from "../assets/product-design/dfm.jpg";
+import conceptImg from "../assets/product-design/concept.png";
+import cadImg from "../assets/product-design/cad.png";
+import dfmImg from "../assets/product-design/dfm.png";
 
 export const productDesignData = {
     hero: {

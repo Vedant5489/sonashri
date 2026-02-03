@@ -3,14 +3,22 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ProductDesign from "./pages/ProductDesign";
 import Prototyping from "./pages/Prototyping";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/services/product-design" element={<ProductDesign />} />
-        <Route path="/services/prototyping" element={<Prototyping />} />
+        <Route
+          path="/services/product-design"
+          element={<ProductDesign />}
+        />
+        <Route
+          path="/services/prototyping"
+          element={<Prototyping />}
+        />
       </Routes>
     </BrowserRouter>
   );
