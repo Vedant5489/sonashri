@@ -1,19 +1,27 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import "../styles/navbar.css";
 import logo from "../assets/logo.png";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const location = useLocation();
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeAll = () => {
+    setMenuOpen(false);
+    setServicesOpen(false);
+  };
+
+  // Highlight Services when inside /services/*
+  const isServicesActive = location.pathname.startsWith("/services");
 
   return (
     <header className="navbar-wrapper">
       <nav className="navbar">
         {/* Logo */}
         <div className="navbar-logo">
-          <NavLink to="/" onClick={closeMenu}>
+          <NavLink to="/" onClick={closeAll}>
             <img src={logo} alt="Sonashri Engineering & Solutions" />
           </NavLink>
         </div>
@@ -31,34 +39,57 @@ export default function Navbar() {
         {/* Links */}
         <ul className={`navbar-links ${menuOpen ? "show" : ""}`}>
           <li>
-            <NavLink to="/" onClick={closeMenu}>
+            <NavLink to="/" onClick={closeAll}>
               Home
             </NavLink>
           </li>
 
-          <li>
-            <NavLink
-              to="/services/product-design"
-              onClick={closeMenu}
+          {/* SERVICES DROPDOWN */}
+          <li
+            className={`services-dropdown ${
+              isServicesActive ? "active" : ""
+            } ${servicesOpen ? "open" : ""}`}
+          >
+            <button
+              className="services-trigger"
+              onClick={() => setServicesOpen(!servicesOpen)}
+              type="button"
             >
-              Product Design
-            </NavLink>
+              Services
+              <span className={`chevron ${servicesOpen ? "open" : ""}`} />
+            </button>
+
+            <ul
+              className={`services-menu ${
+                servicesOpen ? "open" : ""
+              }`}
+            >
+              <li>
+                <NavLink
+                  to="/services/product-design"
+                  onClick={closeAll}
+                >
+                  Product Design
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/services/prototyping"
+                  onClick={closeAll}
+                >
+                  Prototyping
+                </NavLink>
+              </li>
+            </ul>
           </li>
 
-          <li>
-            <NavLink
-              to="/services/prototyping"
-              onClick={closeMenu}
-            >
-              Prototyping
-            </NavLink>
-          </li>
 
+          {/* Contact */}
           <li>
             <NavLink
               to="/contact"
               className="contact-btn"
-              onClick={closeMenu}
+              onClick={closeAll}
             >
               Contact
             </NavLink>

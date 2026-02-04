@@ -15,7 +15,6 @@
   max-width: 1300px;
   margin: 0 auto;
   padding: 0.9rem 2rem;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,12 +26,11 @@
 ========================= */
 .navbar-logo img {
   height: 44px;
-  object-fit: contain;
   display: block;
 }
 
 /* =========================
-   NAV LINKS (BASE)
+   NAV LINKS
 ========================= */
 .navbar-links {
   display: flex;
@@ -42,22 +40,30 @@
 
 .navbar-links li {
   list-style: none;
+  position: relative;
 }
 
-/* =========================
-   NAVLINK STYLING
-========================= */
-.navbar-links a {
+/* Anchor + Button base */
+.navbar-links a,
+.services-trigger {
   position: relative;
   font-size: 0.95rem;
   font-weight: 500;
   color: #e6e6e6;
   text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   transition: color 0.3s ease;
 }
 
 /* Underline */
-.navbar-links a::after {
+.navbar-links a::after,
+.services-trigger::after {
   content: "";
   position: absolute;
   left: 0;
@@ -69,21 +75,35 @@
 }
 
 /* Hover */
-.navbar-links a:hover {
+.navbar-links a:hover,
+.services-trigger:hover {
   color: white;
 }
 
-.navbar-links a:hover::after {
+.navbar-links a:hover::after,
+.services-trigger:hover::after {
   width: 100%;
 }
 
-/* Active route */
-.navbar-links a.active {
-  color: white;
+.navbar-links a.active::after,
+.services-dropdown.active .services-trigger::after {
+  width: 100%;
 }
 
-.navbar-links a.active::after {
-  width: 100%;
+/* =========================
+   CHEVRON ARROW
+========================= */
+.chevron {
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform 0.25s ease;
+}
+
+.chevron.open {
+  transform: rotate(-135deg) translateY(2px);
 }
 
 /* =========================
@@ -107,7 +127,67 @@
 }
 
 /* =========================
-   HAMBURGER (MOBILE)
+   SERVICES DROPDOWN
+========================= */
+
+.services-dropdown {
+  position: relative;
+}
+
+/* Hover zone extender (IMPORTANT) */
+.services-dropdown::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: 18px; /* bridges the gap */
+  width: 100%;
+}
+
+.services-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  min-width: 220px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0.6rem 0;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  z-index: 200;
+}
+
+.services-dropdown:hover .services-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.services-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.services-menu a {
+  display: block;
+  padding: 0.75rem 1.4rem;
+  font-size: 0.95rem;
+  color: var(--black-graphite);
+}
+
+.services-menu a:hover {
+  background: rgba(10, 111, 181, 0.08);
+  color: var(--blue-primary);
+}
+
+/* =========================
+   HAMBURGER
 ========================= */
 .hamburger {
   display: none;
@@ -123,7 +203,6 @@
   transition: 0.3s ease;
 }
 
-/* Hamburger → X */
 .hamburger.open span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -137,7 +216,7 @@
 }
 
 /* =========================
-   MOBILE MENU
+   MOBILE
 ========================= */
 @media (max-width: 768px) {
   .hamburger {
@@ -149,13 +228,11 @@
     top: 100%;
     left: 0;
     width: 100%;
-
     background: var(--black-graphite);
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
     padding: 2rem;
-
     display: none;
   }
 
@@ -163,11 +240,25 @@
     display: flex;
   }
 
-  .navbar-links a {
-    font-size: 1.05rem;
+  .services-menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    background: transparent;
+    padding-left: 1rem;
   }
 
-  .contact-btn {
-    margin-top: 0.5rem;
+  .services-menu a {
+    color: #e6e6e6;
+    padding: 0.6rem 0;
+  }
+
+  .services-menu a:hover {
+    background: none;
+    color: white;
+  }
+
+  .services-dropdown::after {
+    display: none;
   }
 }

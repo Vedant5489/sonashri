@@ -1,45 +1,28 @@
 import { motion } from "framer-motion";
 import "../../styles/services/servicesHero.css";
 
-const videoVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { duration: 1.1, ease: "easeOut" },
-  },
-};
-
 const containerVariants = {
   hidden: {},
   show: {
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.9,
+      delayChildren: 0.5,
     },
   },
 };
 
-const fadeUpVariants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-    filter: "blur(6px)",
-  },
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.9,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.8, ease: "easeOut" },
   },
 };
 
 export default function ServicesHero({ hero }) {
   return (
     <section className="services-hero">
-      {/* Background Video */}
       <motion.video
         className="services-hero-video"
         src={hero.video}
@@ -48,31 +31,41 @@ export default function ServicesHero({ hero }) {
         muted
         playsInline
         preload="metadata"
-        variants={videoVariants}
-        initial="hidden"
-        animate="show"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
       />
 
-      {/* Overlay */}
-      <div className="services-hero-overlay" />
+      <div className="services-hero-gradient" />
 
-      {/* Content */}
       <motion.div
-        className="services-hero-content"
+        className="services-hero-panel"
         variants={containerVariants}
         initial="hidden"
         animate="show"
       >
-        <motion.h1 variants={fadeUpVariants}>
+        <motion.span
+          className="services-hero-domain"
+          variants={fadeUp}
+        >
+          {hero.title.toUpperCase()}
+        </motion.span>
+
+        <motion.h1 variants={fadeUp}>
           {hero.title}
         </motion.h1>
 
+        <motion.div
+          className="services-hero-divider"
+          variants={fadeUp}
+        />
+
         <motion.ul
           className="services-hero-bullets"
-          variants={fadeUpVariants}
+          variants={fadeUp}
         >
-          {hero.bullets.map((point, index) => (
-            <li key={index}>{point}</li>
+          {hero.bullets.map((item, i) => (
+            <li key={i}>{item}</li>
           ))}
         </motion.ul>
       </motion.div>

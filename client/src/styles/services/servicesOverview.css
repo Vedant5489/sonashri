@@ -1,47 +1,86 @@
+/* =========================
+   SECTION
+========================= */
 .services-overview {
-  background: white;
-  padding: 5rem 2rem;
+  background: #ffffff;
+  padding: 3.6rem 2rem; /* compact but breathable */
 }
 
 .services-overview-container {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
+  text-align: center;
 }
 
-/* Heading */
-.services-overview-container h2 {
-  text-align: center;
-  font-size: clamp(2rem, 4vw, 2.6rem);
+/* =========================
+   HEADING
+========================= */
+.services-overview-title {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(1.9rem, 3.5vw, 2.4rem);
   font-weight: 700;
   color: var(--black-graphite);
-  margin-bottom: 2.5rem;
+  padding-bottom: 0.6rem;
 }
 
-/* Bullet List */
+/* Underline (clear but subtle) */
+.services-overview-underline {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--blue-primary);
+  transform: translateX(-50%);
+  transition: width 0.35s ease;
+}
+
+.services-overview-title:hover .services-overview-underline {
+  width: 90px;
+}
+
+/* =========================
+   BULLET LIST (CENTERED)
+========================= */
 .services-overview-list {
   list-style: none;
+  max-width: 760px;
+  margin: 1.8rem auto 0;
   display: grid;
-  gap: 1.4rem;
-  max-width: 820px;
-  margin: 0 auto;
+  gap: 0.85rem;
+  text-align: center;
 }
 
 .services-overview-list li {
   position: relative;
-  padding-left: 2rem;
-  font-size: 1.05rem;
-  line-height: 1.6;
+  padding-left: 0; /* remove left offset */
+  font-size: 1rem;
+  line-height: 1.55;
   color: var(--grey-steel);
 }
 
-/* Bullet accent */
+/* Centered bullet dot */
 .services-overview-list li::before {
   content: "";
-  position: absolute;
-  left: 0;
-  top: 0.65rem;
-  width: 10px;
-  height: 10px;
+  display: inline-block;
+  margin-right: 0.6rem;
+  width: 7px;
+  height: 7px;
   background: var(--blue-primary);
   border-radius: 50%;
+  vertical-align: middle;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .services-overview {
+    padding: 3rem 1.6rem;
+  }
+
+  .services-overview-list {
+    gap: 0.75rem;
+  }
 }
