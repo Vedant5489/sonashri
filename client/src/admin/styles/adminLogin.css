@@ -1,0 +1,64 @@
+/* Full page wrapper */
+.admin-login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f2f4f6; /* Light Grey */
+}
+
+/* Card */
+.admin-login-card {
+  width: 360px;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid #bfc5cc; /* Accent Silver */
+}
+
+/* Title */
+.admin-login-title {
+  margin-bottom: 24px;
+  text-align: center;
+  color: #1e1e1e; /* Graphite Black */
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Inputs */
+.admin-login-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #bfc5cc;
+  outline: none;
+}
+
+.admin-login-input:focus {
+  border-color: #0a6fb5; /* Primary Blue */
+}
+
+/* Button */
+.admin-login-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background: #0a6fb5; /* Primary Blue */
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.admin-login-button:hover {
+  background: #084c8d; /* Deep Blue */
+}
+
+.admin-login-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
