@@ -53,33 +53,46 @@ const AdminLogin = () => {
 
   return (
     <div className="admin-login-wrapper">
-      <form className="admin-login-card" onSubmit={handleLogin}>
-        <h2 className="admin-login-title">Admin Login</h2>
+      <div className="admin-login-overlay">
+        <div className="admin-login-left">
+          <h1>Sonashri Engineering and Solutions</h1>
+          <p>
+            Administrative Control Panel<br />
+            Secure • Reliable • Industrial-grade
+          </p>
+        </div>
 
-        <input
-          type="email"
-          placeholder="Admin Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="admin-login-input"
-        />
+        <form className="admin-login-card" onSubmit={handleLogin}>
+          <h2 className="admin-login-title">Welcome Back 👋</h2>
+          <p className="admin-login-subtitle">
+            Please sign in to continue
+          </p>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="admin-login-input"
-        />
+          <input
+            type="email"
+            placeholder="Admin Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="admin-login-input"
+          />
 
-        <button
-          type="submit"
-          className="admin-login-button"
-          disabled={loading}
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="admin-login-input"
+          />
+
+          <button
+            type="submit"
+            className="admin-login-button"
+            disabled={loading}
+          >
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

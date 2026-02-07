@@ -1,0 +1,214 @@
+/* Root wrapper */
+.training-requests {
+  padding: 32px;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Header */
+.training-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.training-header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.training-header h1 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: #1e1e1e;
+}
+
+.training-subtitle {
+  font-size: 1.05rem;
+  color: #6e6e6e;
+  margin-top: 4px;
+}
+
+/* Table card */
+.training-table-wrapper {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  overflow-x: auto;
+}
+
+/* Table */
+.training-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.training-table thead th {
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #6e6e6e;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.training-table tbody tr {
+  transition:
+    background 0.25s ease,
+    transform 0.15s ease;
+}
+
+.training-table tbody tr:hover {
+  background: #f7f9fb;
+  transform: translateY(-1px);
+}
+
+.training-table td {
+  padding: 14px 16px;
+  font-size: 1rem;
+  color: #1e1e1e;
+  border-bottom: 1px solid #f2f4f6;
+}
+
+/* Name emphasis */
+.name-cell {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* Status dropdown */
+.status-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: #fff;
+}
+
+/* Status colors */
+.status-new {
+  color: #0a6fb5;
+  border-color: #cfe6f6;
+  background: #f2f8fd;
+}
+
+.status-contacted {
+  color: #6b4eff;
+  border-color: #e3dcff;
+  background: #f7f5ff;
+}
+
+.status-rejected {
+  color: #c0392b;
+  border-color: #f5c6c6;
+  background: #fdf3f3;
+}
+
+.status-converted {
+  color: #2e7d32;
+  border-color: #cdeccd;
+  background: #f2fbf2;
+}
+
+/* Focus feel */
+.status-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(10, 111, 181, 0.15);
+}
+
+/* Gmail button */
+.gmail-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ea4335, #c5221f);
+  border-radius: 8px;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gmail-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(234, 67, 53, 0.25);
+}
+
+.gmail-btn:active {
+  transform: translateY(0);
+}
+/* Tooltip */
+.gmail-btn {
+  position: relative;
+}
+
+.gmail-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: #1e1e1e;
+  color: #ffffff;
+  font-size: 0.7rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.gmail-btn:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.header-status-dropdown {
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  background: #ffffff;
+  cursor: pointer;
+  transition:
+    box-shadow 0.25s ease,
+    border 0.25s ease,
+    transform 0.15s ease;
+}
+
+.header-status-dropdown:hover {
+  transform: translateY(-1px);
+}
+
+.header-status-dropdown:focus {
+  outline: none;
+  border-color: #0a6fb5;
+  box-shadow: 0 0 0 3px rgba(10, 111, 181, 0.15);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

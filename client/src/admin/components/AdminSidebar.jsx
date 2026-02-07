@@ -13,22 +13,23 @@ const AdminSidebar = () => {
     <aside className="admin-sidebar">
       <h2 className="admin-logo">Sonashri Admin</h2>
 
-      <nav>
-        <NavLink to="/admin" end>
+      <nav className="admin-nav">
+        <NavLink to="/admin" end className="nav-item">
           Dashboard
         </NavLink>
-        <NavLink to="/admin/training">
+
+        <NavLink to="/admin/training" className="nav-item">
           Training Requests
         </NavLink>
-        <NavLink to="/admin/case-studies">
+
+        <NavLink to="/admin/case-studies" className="nav-item">
           Case Studies
         </NavLink>
-        <NavLink to="/admin/recent-works">
-          Recent Works
-        </NavLink>
-        <button onClick={handleLogout}>Logout</button>
-
       </nav>
+
+      <button className="logout-btn" onClick={handleLogout}>
+        Logout
+      </button>
     </aside>
   );
 };

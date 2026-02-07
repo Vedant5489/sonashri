@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import "../styles/caseStudies.css";
 
 import {
   fetchCaseStudies,
@@ -104,58 +105,91 @@ const CaseStudies = () => {
   };
 
   return (
-    <>
-      <h1>Case Studies</h1>
+    <div className="case-studies">
+      {/* ================= HEADER ================= */}
+      <div className="case-header">
+        <div>
+          <h1>Case Studies</h1>
+          <p className="case-subtitle">
+            Create, review and publish case studies
+          </p>
+        </div>
+      </div>
 
       {/* ================= LIST ================= */}
-      <table style={{ width: "100%", marginBottom: 30 }}>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {caseStudies.length === 0 && (
-            <tr>
-              <td colSpan="4">No case studies yet</td>
-            </tr>
-          )}
+      {!selectedCaseStudy && (
+        <div className="case-table-wrapper">
+          <table className="case-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
 
-          {caseStudies.map((cs) => (
-            <tr key={cs.id}>
-              <td
-                style={{ cursor: "pointer" }}
-                onClick={() => setSelectedCaseStudy(cs)}
-              >
-                {cs.title}
-              </td>
-              <td>{cs.category || "-"}</td>
-              <td>{cs.is_published ? "Published" : "Draft"}</td>
-              <td>
-                <button
-                  onClick={() => {
-                    setSelectedCaseStudy(null);
-                    handleEdit(cs);
-                  }}
-                >
-                  Edit
-                </button>{" "}
-                <button onClick={() => handlePublishToggle(cs.id)}>
-                  Toggle Publish
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            <tbody>
+              {caseStudies.length === 0 && (
+                <tr>
+                  <td colSpan="4" className="empty-state">
+                    No case studies yet
+                  </td>
+                </tr>
+              )}
+
+              {caseStudies.map((cs) => (
+                <tr key={cs.id}>
+                  <td
+                    className="case-title-cell"
+                    onClick={() => setSelectedCaseStudy(cs)}
+                  >
+                    {cs.title}
+                  </td>
+                  <td>{cs.category || "-"}</td>
+                  <td>
+                    <span
+                      className={`case-status ${
+                        cs.is_published ? "published" : "draft"
+                      }`}
+                    >
+                      {cs.is_published ? "Published" : "Draft"}
+                    </span>
+                  </td>
+                  <td className="case-actions">
+                    <button
+                      className="btn-secondary"
+                      onClick={() => {
+                        setSelectedCaseStudy(null);
+                        handleEdit(cs);
+                      }}
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      className="btn-primary"
+                      onClick={() => handlePublishToggle(cs.id)}
+                    >
+                      Toggle Publish
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
       {/* ================= VIEW ================= */}
       {selectedCaseStudy && (
-        <div>
-          <button onClick={() => setSelectedCaseStudy(null)}>← Back</button>
+        <div className="case-view">
+          <button
+            className="btn-back"
+            onClick={() => setSelectedCaseStudy(null)}
+          >
+            ← Back to list
+          </button>
 
           <h2>{selectedCaseStudy.title}</h2>
 
@@ -163,26 +197,27 @@ const CaseStudies = () => {
             <img
               src={`http://localhost:5000${selectedCaseStudy.cover_image}`}
               alt=""
-              style={{ maxWidth: "100%", marginBottom: 16 }}
+              className="case-cover"
             />
           )}
 
-          <p>
-            <strong>Category:</strong> {selectedCaseStudy.category}
-          </p>
-          <p>
-            <strong>Summary:</strong> {selectedCaseStudy.summary}
+          <p className="case-meta">
+            <strong>Category:</strong> {selectedCaseStudy.category || "-"}
           </p>
 
-          <hr />
+          <p className="case-summary">
+            {selectedCaseStudy.summary}
+          </p>
 
-          <p>{selectedCaseStudy.content}</p>
+          <div className="case-content">
+            {selectedCaseStudy.content}
+          </div>
         </div>
       )}
 
       {/* ================= FORM ================= */}
       {!selectedCaseStudy && (
-        <>
+        <div className="case-form">
           <h2>{editingId ? "Edit Case Study" : "Add Case Study"}</h2>
 
           <form onSubmit={handleSubmit}>
@@ -193,7 +228,6 @@ const CaseStudies = () => {
                 setForm({ ...form, title: e.target.value })
               }
             />
-            <br /><br />
 
             <textarea
               placeholder="Summary"
@@ -202,7 +236,6 @@ const CaseStudies = () => {
                 setForm({ ...form, summary: e.target.value })
               }
             />
-            <br /><br />
 
             <textarea
               placeholder="Content"
@@ -212,7 +245,6 @@ const CaseStudies = () => {
                 setForm({ ...form, content: e.target.value })
               }
             />
-            <br /><br />
 
             <input
               placeholder="Category"
@@ -221,9 +253,8 @@ const CaseStudies = () => {
                 setForm({ ...form, category: e.target.value })
               }
             />
-            <br /><br />
 
-            <label>
+            <label className="publish-toggle">
               <input
                 type="checkbox"
                 checked={form.is_published}
@@ -234,8 +265,6 @@ const CaseStudies = () => {
               Published
             </label>
 
-            <br /><br />
-
             <input
               type="file"
               accept="image/*"
@@ -244,15 +273,13 @@ const CaseStudies = () => {
               }
             />
 
-            <br /><br />
-
-            <button type="submit">
-              {editingId ? "Update" : "Create"}
+            <button type="submit" className="btn-primary">
+              {editingId ? "Update Case Study" : "Create Case Study"}
             </button>
           </form>
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

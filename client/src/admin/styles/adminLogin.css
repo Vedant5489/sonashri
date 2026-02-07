@@ -1,64 +1,143 @@
-/* Full page wrapper */
+/* ================= ROOT ================= */
+
 .admin-login-wrapper {
   min-height: 100vh;
+  background: linear-gradient(135deg, #0a6fb5, #084c8d, #1e1e1e);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f2f4f6; /* Light Grey */
+  padding: 40px;
 }
 
-/* Card */
+/* Overlay */
+.admin-login-overlay {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 520px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  border-radius: 24px;
+
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+/* ================= LEFT PANEL ================= */
+
+.admin-login-left {
+  padding: 64px;
+  color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.admin-login-left h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.admin-login-left p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #f2f4f6;
+}
+
+/* ================= LOGIN CARD ================= */
+
 .admin-login-card {
-  width: 360px;
-  padding: 32px;
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  border: 1px solid #bfc5cc; /* Accent Silver */
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Title */
 .admin-login-title {
-  margin-bottom: 24px;
-  text-align: center;
-  color: #1e1e1e; /* Graphite Black */
-  font-size: 22px;
+  font-size: 2rem;
   font-weight: 600;
+  margin-bottom: 8px;
+  color: #1e1e1e;
+}
+
+.admin-login-subtitle {
+  font-size: 1.1rem;
+  color: #6e6e6e;
+  margin-bottom: 32px;
 }
 
 /* Inputs */
 .admin-login-input {
-  width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 16px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #bfc5cc;
-  outline: none;
+  padding: 14px 16px;
+  font-size: 1.05rem;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  margin-bottom: 18px;
+
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .admin-login-input:focus {
-  border-color: #0a6fb5; /* Primary Blue */
+  outline: none;
+  border-color: #0a6fb5;
+  box-shadow: 0 0 0 3px rgba(10, 111, 181, 0.15);
 }
 
 /* Button */
 .admin-login-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  background: #0a6fb5; /* Primary Blue */
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #0a6fb5, #084c8d);
+
   color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  border: none;
   cursor: pointer;
-  transition: background 0.2s ease;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .admin-login-button:hover {
-  background: #084c8d; /* Deep Blue */
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(10, 111, 181, 0.35);
 }
 
 .admin-login-button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .admin-login-overlay {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-login-left {
+    padding: 40px;
+    text-align: center;
+  }
+
+  .admin-login-left h1 {
+    font-size: 2.2rem;
+  }
+
+  .admin-login-card {
+    padding: 40px;
+  }
 }
