@@ -156,3 +156,24 @@ export const getPublishedCaseStudies = async (req, res) => {
         res.status(500).json({ message: "Failed to fetch case studies" });
     }
 };
+
+/* ================= GET SINGLE PUBLISHED CASE STUDY ================= */
+export const getPublishedCaseStudyById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const [rows] = await db.query(
+            "SELECT * FROM case_studies WHERE id = ? AND is_published = 1 LIMIT 1",
+            [id]
+        );
+
+        if (rows.length === 0) {
+            return res.status(404).json(null);
+        }
+
+        res.json(rows[0]);
+    } catch (error) {
+        console.error("Error fetching case study by id:", error);
+        res.status(500).json({ message: "Failed to fetch case study" });
+    }
+};

@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import ServicesHero from "../components/services/ServicesHero";
 import ServicesOverview from "../components/services/ServicesOverview";
 import CapabilityExplorer from "../components/services/CapabilityExplorer";
-import ServicesCaseStudies from "../components/services/ServicesCaseStudies";
+import CaseStudiesDisplay from "../components/CaseStudiesDisplay";
 import Footer from "../components/Footer";
 
 export default function ServicesLayout({ data }) {
@@ -16,7 +16,7 @@ export default function ServicesLayout({ data }) {
 
       <CapabilityExplorer capabilities={data.capabilities} />
 
-      <ServicesCaseStudies />
+      <CaseStudiesDisplay />
 
       <Footer />
     </>

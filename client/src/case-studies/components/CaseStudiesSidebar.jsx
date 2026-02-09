@@ -1,0 +1,45 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { fetchCaseStudies } from "../../api/caseStudies.api";
+
+const CaseStudiesSidebar = () => {
+  const [studies, setStudies] = useState([]);
+  const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetchCaseStudies()
+      .then((data) => {
+        if (Array.isArray(data)) setStudies(data);
+      })
+      .catch(() => {});
+  }, []);
+
+  return (
+    <div className="case-sidebar">
+      <button
+        className="case-back-btn"
+        onClick={() => navigate("/case-studies")}
+      >
+        ← Back to all case studies
+      </button>
+
+      <div className="case-sidebar-list">
+        {studies.map((cs) => (
+          <div
+            key={cs.id}
+            className={`case-sidebar-item ${
+              String(cs.id) === id ? "active" : ""
+            }`}
+            onClick={() => navigate(`/case-studies/${cs.id}`)}
+          >
+            <h4>{cs.title}</h4>
+            <p>{cs.summary}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default CaseStudiesSidebar;

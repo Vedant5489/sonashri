@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import WhatWeOffer from "../components/WhatWeOffer";
-import OurWork from "../components/OurWork";
+import CaseStudiesDisplay from "../components/CaseStudiesDisplay";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <WhatWeOffer />
-      <OurWork />
+      <CaseStudiesDisplay />
       <Footer />
     </>
   );

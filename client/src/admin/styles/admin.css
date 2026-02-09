@@ -1,10 +1,114 @@
+/* =====================================================
+   ADMIN LAYOUT – RESPONSIVE WITH COLLAPSIBLE SIDEBAR
+===================================================== */
+
+/* ================= ROOT ================= */
+
 .admin-layout {
   display: flex;
   min-height: 100vh;
   background: #f2f4f6;
 }
 
+/* ================= SIDEBAR ================= */
+
+.admin-sidebar {
+  width: 260px;
+  background: #1e1e1e;
+  color: #ffffff;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+/* ================= CONTENT ================= */
+
 .admin-content {
   flex: 1;
-  padding: 32px;
+  padding: 2.4rem 2.8rem;
+  background: #f2f4f6;
+  overflow-x: hidden;
+}
+
+/* ================= MOBILE TOGGLE BUTTON ================= */
+
+/* Hidden by default (desktop) */
+.admin-sidebar-toggle {
+  display: none;
+}
+
+/* ================= BACKDROP ================= */
+
+.admin-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1100;
+}
+
+/* Sidebar should be above backdrop */
+.admin-sidebar {
+  z-index: 1200;
+}
+
+/* Toggle button stays on top */
+.admin-sidebar-toggle {
+  z-index: 1300;
+}
+
+/* ================= MOBILE BEHAVIOR ================= */
+
+@media (max-width: 900px) {
+  .admin-layout {
+    position: relative;
+  }
+
+  /* Sidebar becomes off-canvas */
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1200;
+    transform: translateX(-100%);
+    box-shadow: 8px 0 28px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Sidebar open state */
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Content full width */
+  .admin-content {
+    padding: 1.8rem 1.4rem 2.8rem;
+  }
+
+  /* Floating toggle button */
+  .admin-sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1300;
+
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: none;
+
+    background: #0a6fb5;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(10, 111, 181, 0.35);
+  }
+
+  .admin-sidebar-toggle:active {
+    transform: scale(0.95);
+  }
 }

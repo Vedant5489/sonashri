@@ -77,3 +77,32 @@ src/
 ├── servicesOverview.css
 ├── capabilityExplorer.css
 └── servicesCaseStudies.css
+
+<!-- Case Studies page layout -->
+
+[ Hero Section ]
+
+- Title
+- One-line summary
+- Category
+- Cover Image (wide, calm)
+
+[ Problem Statement ]
+
+- What was broken / inefficient / missing?
+
+[ Solution Approach ]
+
+- What YOU designed / built / improved
+
+[ Execution Highlights ]
+
+- Bullet points (clear, scannable)
+
+[ Outcome / Impact ]
+
+- Tangible results (even qualitative is fine)
+
+[ Closing Note ]
+
+- Why this approach matters / scales

@@ -16,6 +16,10 @@ export default function Navbar() {
   // Highlight Services when inside /services/*
   const isServicesActive = location.pathname.startsWith("/services");
 
+  // Highlight Case Studies when inside /case-studies/*
+  const isCaseStudiesActive =
+    location.pathname.startsWith("/case-studies");
+
   return (
     <header className="navbar-wrapper">
       <nav className="navbar">
@@ -59,11 +63,7 @@ export default function Navbar() {
               <span className={`chevron ${servicesOpen ? "open" : ""}`} />
             </button>
 
-            <ul
-              className={`services-menu ${
-                servicesOpen ? "open" : ""
-              }`}
-            >
+            <ul className={`services-menu ${servicesOpen ? "open" : ""}`}>
               <li>
                 <NavLink
                   to="/services/product-design"
@@ -83,6 +83,12 @@ export default function Navbar() {
             </ul>
           </li>
 
+          {/* CASE STUDIES */}
+          <li className={isCaseStudiesActive ? "active" : ""}>
+            <NavLink to="/case-studies" onClick={closeAll}>
+              Case Studies
+            </NavLink>
+          </li>
 
           {/* Contact */}
           <li>

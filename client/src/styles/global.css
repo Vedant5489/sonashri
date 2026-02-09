@@ -19,3 +19,20 @@ button {
   cursor: pointer;
   border: none;
 }
+
+@media (max-width: 900px) {
+  .case-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .case-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .case-studies-page,
+  .case-detail {
+    padding: 3rem 1.2rem;
+  }
+}

@@ -2,7 +2,7 @@
 
 .case-studies {
   padding: 32px;
-  animation: fadeIn 0.5s ease;
+  animation: fadeIn 0.45s ease;
 }
 
 /* ================= HEADER ================= */
@@ -12,15 +12,16 @@
 }
 
 .case-header h1 {
-  font-size: 2.4rem;
+  font-size: 2.35rem;
   font-weight: 600;
   color: #1e1e1e;
 }
 
 .case-subtitle {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #6e6e6e;
   margin-top: 6px;
+  max-width: 720px;
 }
 
 /* ================= TABLE ================= */
@@ -29,7 +30,7 @@
   background: #ffffff;
   border-radius: 16px;
   padding: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.045);
   margin-bottom: 44px;
   overflow-x: auto;
 }
@@ -40,36 +41,36 @@
   min-width: 760px;
 }
 
+/* Head */
 .case-table th {
   text-align: left;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: #6e6e6e;
-  padding: 16px;
+  padding: 14px 16px;
   border-bottom: 1px solid #f0f0f0;
 }
 
+/* Body */
 .case-table td {
-  padding: 16px;
-  font-size: 1.1rem;
+  padding: 15px 16px;
+  font-size: 1.05rem;
   color: #1e1e1e;
   border-bottom: 1px solid #f2f4f6;
 }
 
 .case-table tr {
-  transition:
-    background 0.25s ease,
-    transform 0.15s ease;
+  transition: background 0.2s ease;
 }
 
 .case-table tr:hover {
   background: #f7f9fb;
-  transform: translateY(-1px);
 }
 
+/* Clickable title */
 .case-title-cell {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
 }
@@ -79,8 +80,8 @@
 .case-status {
   display: inline-flex;
   align-items: center;
-  padding: 8px 14px;
-  font-size: 0.85rem;
+  padding: 6px 12px;
+  font-size: 0.8rem;
   font-weight: 700;
   border-radius: 999px;
 }
@@ -100,19 +101,24 @@
 .case-actions {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 /* ================= BUTTONS ================= */
 
-.btn-primary {
-  padding: 10px 16px;
+.btn-primary,
+.btn-secondary {
+  padding: 9px 15px;
   border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
   background: #0a6fb5;
   color: #ffffff;
   border: none;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease;
@@ -124,26 +130,17 @@
 }
 
 .btn-secondary {
-  padding: 10px 16px;
-  border-radius: 10px;
   background: linear-gradient(180deg, #f7f9fb, #eef1f4);
   border: 1px solid #e1e5ea;
   color: #1e1e1e;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    background 0.15s ease,
-    border-color 0.15s ease;
 }
 
+/* Back button */
 .btn-back {
   background: none;
   border: none;
   color: #0a6fb5;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   margin-bottom: 20px;
@@ -157,7 +154,7 @@
 
 .case-view h2 {
   font-size: 2rem;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .case-cover {
@@ -167,14 +164,14 @@
 }
 
 .case-summary {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: #444;
   line-height: 1.6;
   margin-bottom: 24px;
 }
 
 .case-content {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   line-height: 1.8;
   color: #1e1e1e;
 }
@@ -183,10 +180,11 @@
 
 .case-form {
   max-width: 760px;
+  scroll-margin-top: 90px;
 }
 
 .case-form h2 {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   margin-bottom: 16px;
 }
 
@@ -197,10 +195,10 @@
   margin-bottom: 16px;
   border-radius: 12px;
   border: 1px solid #dcdcdc;
-  font-size: 1.05rem;
+  font-size: 1rem;
   transition:
-    box-shadow 0.2s ease,
-    border 0.2s ease;
+    border 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .case-form input:focus,
@@ -210,16 +208,81 @@
   box-shadow: 0 0 0 3px rgba(10, 111, 181, 0.15);
 }
 
-/* ================= PUBLISH TOGGLE ================= */
+/* ================= MARKDOWN ================= */
+
+.markdown-editor {
+  margin-bottom: 24px;
+}
+
+.markdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.markdown-header label {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.markdown-toggle {
+  background: none;
+  border: none;
+  color: #0a6fb5;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.markdown-preview {
+  margin-top: 16px;
+  padding: 18px;
+  background: #f2f4f6;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.markdown-preview h2,
+.markdown-view h2 {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.markdown-preview p,
+.markdown-view p {
+  margin-bottom: 14px;
+  color: #444;
+}
+
+.markdown-preview ul,
+.markdown-view ul {
+  margin-left: 20px;
+  margin-bottom: 16px;
+}
+
+/* ================= PUBLISH SWITCH ================= */
 
 .publish-toggle {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-  font-size: 1.05rem;
-  font-weight: 600;
+  gap: 12px;
+  margin: 22px 0;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1e1e1e;
   line-height: 1;
+}
+/* Label text */
+.publish-label {
+  display: inline-flex;
+  align-items: center;
+  padding-top: 1px; /* optical alignment */
+  letter-spacing: 0.01em;
 }
 
 /* Hide default checkbox */
@@ -227,17 +290,16 @@
   appearance: none;
   width: 44px;
   height: 24px;
-  background: #dcdcdc;
+  background: #d1d5db;
   border-radius: 999px;
   position: relative;
   cursor: pointer;
-  transition: background 0.25s ease;
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-/* Toggle knob */
+/* Switch knob */
 .publish-toggle input::after {
   content: "";
   width: 18px;
@@ -249,9 +311,10 @@
   left: 3px;
   transform: translateY(-50%);
   transition: transform 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-/* Checked state */
+/* Checked = Published */
 .publish-toggle input:checked {
   background: #2e7d32;
 }
@@ -260,49 +323,54 @@
   transform: translate(20px, -50%);
 }
 
-/* ================= EMPTY ================= */
-
-.empty-state {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #999;
-  padding: 36px;
+/* Focus accessibility */
+.publish-toggle input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.22);
 }
 
-/* ================= RESPONSIVE ================= */
+.publish-toggle span,
+.publish-toggle label {
+  display: inline-flex;
+  align-items: center;
+  padding-top: 1px; /* optical correction */
+  letter-spacing: 0.01em; /* calmer text */
+}
 
-@media (max-width: 900px) {
-  .case-header {
-    margin-bottom: 20px;
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .case-table {
+    min-width: 0;
+    width: 100%;
   }
 
   .case-table-wrapper {
-    padding: 14px;
+    overflow-x: hidden;
+    padding: 0;
+    background: none;
+    box-shadow: none;
   }
-}
 
-@media (max-width: 600px) {
   .case-table thead {
     display: none;
   }
 
   .case-table tr {
     display: block;
-    margin-bottom: 18px;
-    border-radius: 14px;
     background: #ffffff;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 18px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.045);
   }
 
   .case-table td {
     display: flex;
     justify-content: space-between;
-    padding: 14px;
-    border-bottom: 1px solid #f2f4f6;
-  }
-
-  .case-table td:last-child {
-    border-bottom: none;
+    padding: 10px 0;
+    border: none;
+    font-size: 0.95rem;
   }
 
   .case-actions {

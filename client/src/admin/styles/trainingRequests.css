@@ -212,3 +212,95 @@
     transform: translateY(0);
   }
 }
+
+/* ================= MOBILE CARD VIEW ================= */
+
+@media (max-width: 768px) {
+  .training-table-wrapper {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .training-table {
+    border-collapse: separate;
+    border-spacing: 0 14px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* Hide table head */
+  .training-table thead {
+    display: none;
+  }
+
+  /* Each row becomes a card */
+  .training-table tr {
+    display: block;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px 18px;
+    max-width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  }
+
+  .training-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border: none;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+  }
+
+  .training-table td[data-label="Contact"] {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .training-table td[data-label="Contact"]::before {
+    display: none;
+  }
+
+  /* Labels before values */
+  .training-table td::before {
+    content: attr(data-label);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6e6e6e;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* Name emphasis */
+  .training-table .name-cell {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1e1e1e;
+  }
+
+  /* Status dropdown spacing */
+  .status-select {
+    min-width: 140px;
+  }
+
+  /* Gmail button full width */
+  .gmail-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 0;
+    font-size: 0.9rem;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .training-table tr {
+    padding: 14px 14px;
+  }
+}

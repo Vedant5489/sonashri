@@ -8,9 +8,9 @@ const handleLogout = () => {
   window.location.href = "/admin/login";
 };
 
-const AdminSidebar = () => {
+const AdminSidebar = ({ open }) => {
   return (
-    <aside className="admin-sidebar">
+    <div className={`admin-sidebar ${open ? "open" : ""}`}>
       <h2 className="admin-logo">Sonashri Admin</h2>
 
       <nav className="admin-nav">
@@ -18,7 +18,7 @@ const AdminSidebar = () => {
           Dashboard
         </NavLink>
 
-        <NavLink to="/admin/training" className="nav-item">
+        <NavLink to="/admin/training-requests" className="nav-item">
           Training Requests
         </NavLink>
 
@@ -30,8 +30,9 @@ const AdminSidebar = () => {
       <button className="logout-btn" onClick={handleLogout}>
         Logout
       </button>
-    </aside>
+    </div>
   );
 };
+
 
 export default AdminSidebar;

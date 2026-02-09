@@ -87,11 +87,11 @@ const TrainingRequests = () => {
           <tbody>
             {filteredRequests.map((req) => (
               <tr key={req.id}>
-                <td className="name-cell">{req.name}</td>
-                <td>{req.email}</td>
-                <td>{req.phone}</td>
-                <td>{req.role || "-"}</td>
-                <td>
+                <td data-label="Name" className="name-cell">{req.name}</td>
+                <td data-label="Email">{req.email}</td>
+                <td data-label="Phone">{req.phone}</td>
+                <td data-label="Role">{req.role || "-"}</td>
+                <td data-label="Status">
                   <select
                     className={`status-select status-${req.status.toLowerCase()}`}
                     value={req.status}
@@ -106,7 +106,7 @@ const TrainingRequests = () => {
                     ))}
                   </select>
                 </td>
-                <td>
+                <td data-label="Contact">
                   <a
                     className="gmail-btn"
                     data-tooltip="Compose email to trainee"

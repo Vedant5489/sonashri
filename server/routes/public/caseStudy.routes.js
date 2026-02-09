@@ -1,8 +1,12 @@
 import express from "express";
-import { getPublishedCaseStudies } from "../../controllers/caseStudy.controller.js";
+import {
+    getPublishedCaseStudies,
+    getPublishedCaseStudyById,
+} from "../../controllers/caseStudy.controller.js";
 
 const router = express.Router();
 
 router.get("/", getPublishedCaseStudies);
+router.get("/:id", getPublishedCaseStudyById);
 
 export default router;

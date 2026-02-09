@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import toast from "react-hot-toast";
+import ReactMarkdown from "react-markdown";
 import "../styles/caseStudies.css";
 
 import {
@@ -18,11 +19,23 @@ const emptyForm = {
   cover_image: null,
 };
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
+
 const CaseStudies = () => {
+  const formRef = useRef(null);
+
   const [caseStudies, setCaseStudies] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
   const [form, setForm] = useState(emptyForm);
   const [editingId, setEditingId] = useState(null);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
+  const [showPreview, setShowPreview] = useState(true);
 
   const loadCaseStudies = async () => {
     try {
@@ -66,11 +79,15 @@ const CaseStudies = () => {
 
       setForm(emptyForm);
       setEditingId(null);
-      loadCaseStudies();
-    } catch {
-      toast.error("Operation failed", { id: loadingToast });
-    }
-  };
+      setIsEditing(false);
+      setShowPreview(true);
+      await loadCaseStudies();
+
+      scrollToTop();
+      } catch {
+        toast.error("Operation failed", { id: loadingToast });
+      }
+    };
 
   /* ================= EDIT ================= */
 
@@ -85,10 +102,21 @@ const CaseStudies = () => {
     });
 
     setEditingId(cs.id);
+    setIsEditing(true);
     setSelectedCaseStudy(null);
+    setShowPreview(true);
+
+    requestAnimationFrame(() => {
+      formRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
 
     toast("Editing case study");
   };
+
+
 
   /* ================= PUBLISH ================= */
 
@@ -142,7 +170,11 @@ const CaseStudies = () => {
                 <tr key={cs.id}>
                   <td
                     className="case-title-cell"
-                    onClick={() => setSelectedCaseStudy(cs)}
+                    onClick={() => {
+                      setSelectedCaseStudy(cs);
+                      setIsEditing(false);
+                      setEditingId(null);
+                    }}
                   >
                     {cs.title}
                   </td>
@@ -159,10 +191,7 @@ const CaseStudies = () => {
                   <td className="case-actions">
                     <button
                       className="btn-secondary"
-                      onClick={() => {
-                        setSelectedCaseStudy(null);
-                        handleEdit(cs);
-                      }}
+                      onClick={() => handleEdit(cs)}
                     >
                       Edit
                     </button>
@@ -186,7 +215,12 @@ const CaseStudies = () => {
         <div className="case-view">
           <button
             className="btn-back"
-            onClick={() => setSelectedCaseStudy(null)}
+            onClick={() => {
+              setSelectedCaseStudy(null);
+              setEditingId(null);
+              setIsEditing(false);
+              setForm(emptyForm);
+            }}
           >
             ← Back to list
           </button>
@@ -209,16 +243,21 @@ const CaseStudies = () => {
             {selectedCaseStudy.summary}
           </p>
 
-          <div className="case-content">
-            {selectedCaseStudy.content}
+          <div className="case-content markdown-view">
+            <ReactMarkdown>
+              {selectedCaseStudy.content}
+            </ReactMarkdown>
           </div>
         </div>
       )}
 
       {/* ================= FORM ================= */}
       {!selectedCaseStudy && (
-        <div className="case-form">
-          <h2>{editingId ? "Edit Case Study" : "Add Case Study"}</h2>
+        <div
+          className={`case-form ${isEditing ? "editing" : ""}`}
+          ref={formRef}
+        >
+          <h2>{editingId ? "Edit Case Study" : "Add New Case Study"}</h2>
 
           <form onSubmit={handleSubmit}>
             <input
@@ -237,14 +276,39 @@ const CaseStudies = () => {
               }
             />
 
-            <textarea
-              placeholder="Content"
-              rows="6"
-              value={form.content}
-              onChange={(e) =>
-                setForm({ ...form, content: e.target.value })
-              }
-            />
+            {/* ===== MARKDOWN CONTENT ===== */}
+            <div className="markdown-editor">
+              <div className="markdown-header">
+                <label>Content</label>
+                <button
+                  type="button"
+                  onClick={() => setShowPreview((p) => !p)}
+                  className="markdown-toggle"
+                >
+                  {showPreview ? "Hide Preview" : "Show Preview"}
+                </button>
+              </div>
+
+              <textarea
+                placeholder={`Paste content from Word here.
+
+Use headings, bullet points and paragraphs.
+Formatting will be preserved.`}
+                rows="10"
+                value={form.content}
+                onChange={(e) =>
+                  setForm({ ...form, content: e.target.value })
+                }
+              />
+
+              {showPreview && (
+                <div className="markdown-preview">
+                  <ReactMarkdown>
+                    {form.content || "Live preview will appear here…"}
+                  </ReactMarkdown>
+                </div>
+              )}
+            </div>
 
             <input
               placeholder="Category"
@@ -265,6 +329,7 @@ const CaseStudies = () => {
               Published
             </label>
 
+
             <input
               type="file"
               accept="image/*"
@@ -272,6 +337,21 @@ const CaseStudies = () => {
                 setForm({ ...form, cover_image: e.target.files[0] })
               }
             />
+
+            {isEditing && (
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={() => {
+                  setForm(emptyForm);
+                  setEditingId(null);
+                  setIsEditing(false);
+                  scrollToTop();
+                }}
+              >
+                Cancel Edit
+              </button>
+            )}
 
             <button type="submit" className="btn-primary">
               {editingId ? "Update Case Study" : "Create Case Study"}
