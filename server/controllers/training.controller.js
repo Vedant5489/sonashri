@@ -1,23 +1,37 @@
 import db from "../config/db.js";
 
 export const createTrainingRequest = async (req, res) => {
+    const {
+        fullName,
+        email,
+        phone,
+        interestArea,
+        message
+    } = req.body;
+
+    if (!fullName || !email || !phone) {
+        return res.status(400).json({ message: "Required fields missing" });
+    }
+
     try {
-        const { name, email, phone, role, message } = req.body;
-
-        if (!name || !email || !phone) {
-            return res.status(400).json({ message: "Required fields missing" });
-        }
-
         const query = `
-      INSERT INTO training_requests (name, email, phone, role, message)
+      INSERT INTO training_requests 
+      (name, email, phone, role, message)
       VALUES (?, ?, ?, ?, ?)
     `;
 
-        await db.execute(query, [name, email, phone, role, message]);
+        await db.execute(query, [
+            fullName,
+            email,
+            phone,
+            interestArea || null,
+            message || null
+        ]);
 
-        res.status(201).json({ message: "Training request submitted" });
-    } catch (err) {
-        console.error(err);
+        res.status(201).json({ message: "Training request submitted successfully" });
+
+    } catch (error) {
+        console.error("MySQL Error:", error);
         res.status(500).json({ message: "Server error" });
     }
 };

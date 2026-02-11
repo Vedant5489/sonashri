@@ -13,12 +13,9 @@ export default function Navbar() {
     setServicesOpen(false);
   };
 
-  // Highlight Services when inside /services/*
   const isServicesActive = location.pathname.startsWith("/services");
-
-  // Highlight Case Studies when inside /case-studies/*
-  const isCaseStudiesActive =
-    location.pathname.startsWith("/case-studies");
+  const isTrainingActive = location.pathname.startsWith("/training");
+  const isCaseStudiesActive =location.pathname.startsWith("/case-studies");
 
   return (
     <header className="navbar-wrapper">
@@ -87,6 +84,13 @@ export default function Navbar() {
           <li className={isCaseStudiesActive ? "active" : ""}>
             <NavLink to="/case-studies" onClick={closeAll}>
               Case Studies
+            </NavLink>
+          </li>
+
+          {/* TRAINING */}
+          <li className={isTrainingActive ? "active" : ""}>
+            <NavLink to="/training" onClick={closeAll}>
+              Training and Career
             </NavLink>
           </li>
 

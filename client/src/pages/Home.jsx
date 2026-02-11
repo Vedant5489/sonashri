@@ -10,7 +10,11 @@ export default function Home() {
       <Navbar />
       <Hero />
       <WhatWeOffer />
-      <CaseStudiesDisplay />
+      <CaseStudiesDisplay
+        title="Our Recent Work"
+        subtitle="Practical engineering and digital solutions delivering measurable business impact."
+        limit={3}
+      />
       <Footer />
     </>
   );

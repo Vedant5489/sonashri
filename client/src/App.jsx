@@ -15,6 +15,7 @@ import TrainingRequests from "./admin/pages/TrainingRequests";
 import ProtectedRoute from "./admin/ProtectedRoute";
 import ProductDesign from "./pages/ProductDesign";
 import Prototyping from "./pages/Prototyping";
+import TrainingForm from "./pages/TrainingForm";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/case-studies/:id" element={<CaseStudiesLayout />} />
-
+        <Route path="/training" element={<TrainingForm />} />
+        
         <Route path="/services/product-design" element={<ProductDesign />} />
         <Route path="/services/prototyping" element={<Prototyping />} />
 
@@ -42,6 +44,7 @@ function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="case-studies" element={<CaseStudiesAdmin />} />
           <Route path="training-requests" element={<TrainingRequests />} />
+
         </Route>
       </Routes>
     </BrowserRouter>

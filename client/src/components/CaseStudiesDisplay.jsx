@@ -4,18 +4,22 @@ import CaseStudyCard from "../case-studies/components/CaseStudyCard";
 import { fetchCaseStudies } from "../api/caseStudies.api";
 import "../styles/caseStudiesDisplay.css";
 
-const CaseStudiesDisplay = () => {
+const CaseStudiesDisplay = ({
+  title = "Case Studies",
+  subtitle = "Practical engineering and digital solutions delivering measurable business impact.",
+  limit = 3,
+}) => {
   const [caseStudies, setCaseStudies] = useState([]);
 
   useEffect(() => {
     fetchCaseStudies()
       .then((data) => {
         if (Array.isArray(data)) {
-          setCaseStudies(data.slice(0, 3));
+          setCaseStudies(data.slice(0, limit));
         }
       })
       .catch(() => {});
-  }, []);
+  }, [limit]);
 
   if (caseStudies.length === 0) return null;
 
@@ -23,16 +27,12 @@ const CaseStudiesDisplay = () => {
     <section className="case-studies-display">
       <div className="csd-header">
         <h2 className="csd-title">
-          Case Studies
+          {title}
           <span className="csd-underline" />
         </h2>
 
-        <p className="csd-subtitle">
-          Practical engineering and digital solutions delivering measurable
-          business impact.
-        </p>
+        <p className="csd-subtitle">{subtitle}</p>
       </div>
-
 
       <div className="csd-grid">
         {caseStudies.map((cs) => (
@@ -48,5 +48,6 @@ const CaseStudiesDisplay = () => {
     </section>
   );
 };
+
 
 export default CaseStudiesDisplay;

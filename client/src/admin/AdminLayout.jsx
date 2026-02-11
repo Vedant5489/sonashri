@@ -10,11 +10,14 @@ const AdminLayout = () => {
     <div className="admin-layout">
       {/* Mobile toggle button */}
       <button
-        className="admin-sidebar-toggle"
-        onClick={() => setSidebarOpen(true)}
+        className={`admin-sidebar-toggle ${sidebarOpen ? "open" : ""}`}
+        onClick={() => setSidebarOpen(!sidebarOpen)}
       >
-        ☰
+        <span className={`toggle-text ${sidebarOpen ? "fade-in" : "fade-out"}`}>
+          {sidebarOpen ? "← Back" : "☰ Menu"}
+        </span>
       </button>
+
 
       {/* Backdrop (click-away) */}
       {sidebarOpen && (
@@ -24,7 +27,7 @@ const AdminLayout = () => {
         />
       )}
 
-      <AdminSidebar open={sidebarOpen} />
+      <AdminSidebar open={sidebarOpen} setOpen={setSidebarOpen} />
 
       <main className="admin-content">
         <Outlet />

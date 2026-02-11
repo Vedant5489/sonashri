@@ -1,0 +1,173 @@
+/* =====================================================
+   TRAINING PAGE – ENTERPRISE PROFESSIONAL STYLE
+   Uses global heading + underline styles
+===================================================== */
+
+h2 {
+  margin-bottom: 20px;
+}
+/* ================= PAGE WRAPPER ================= */
+
+.training-page {
+  padding-top: 50px;
+  background: #ffffff;
+}
+
+/* ================= ABOUT SECTION ================= */
+
+.training-about {
+  padding: 70px 0 60px;
+}
+
+.training-about .container {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ================= FORM SECTION ================= */
+
+.training-form-section {
+  padding: 80px 0 100px;
+  background: #f7f9fb; /* subtle separation */
+}
+
+.training-form-section .container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Improve subtitle spacing */
+.training-form-section .section-subtitle,
+.training-about .section-subtitle {
+  max-width: 700px;
+  margin: 0 auto 45px;
+  line-height: 1.7;
+  color: #6e6e6e;
+}
+
+/* ================= FORM CARD WRAPPER ================= */
+
+.training-form {
+  background: #ffffff;
+  padding: 40px 45px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* Make textarea + button full width */
+.training-form textarea,
+.training-form button {
+  grid-column: span 2;
+}
+
+/* ================= INPUT STYLING ================= */
+
+.training-form input,
+.training-form textarea {
+  width: 100%;
+  padding: 15px 18px;
+  border: 1px solid #e2e6ea;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #ffffff;
+  transition: all 0.25s ease;
+}
+
+/* Focus */
+.training-form input:focus,
+.training-form textarea:focus {
+  outline: none;
+  border-color: #0a6fb5;
+  box-shadow: 0 0 0 4px rgba(10, 111, 181, 0.1);
+}
+
+/* Textarea sizing */
+.training-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ================= BUTTON ================= */
+
+.training-form .btn-primary {
+  margin-top: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.training-form .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(10, 111, 181, 0.25);
+}
+
+.training-form .btn-primary:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+  .training-form {
+    padding: 35px;
+  }
+}
+
+@media (max-width: 900px) {
+  .training-about {
+    padding: 60px 0 50px;
+  }
+
+  .training-form-section {
+    padding: 70px 0 80px;
+  }
+
+  .training-form {
+    grid-template-columns: 1fr;
+    padding: 30px;
+    gap: 18px;
+  }
+
+  .training-form textarea,
+  .training-form button {
+    grid-column: span 1;
+  }
+
+  .training-form input,
+  .training-form textarea {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .training-page {
+    padding-top: 95px;
+  }
+
+  .training-form {
+    padding: 24px;
+  }
+
+  .training-form input,
+  .training-form textarea {
+    font-size: 0.85rem;
+    padding: 13px 15px;
+  }
+}

@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25);
+  will-change: transform;
 }
 
 /* ================= LOGO ================= */
@@ -18,12 +19,9 @@
   font-size: 1.9rem;
   font-weight: 700;
   letter-spacing: 0.6px;
-
   color: #ffffff;
-
   padding-bottom: 18px;
   margin-bottom: 36px;
-
   position: relative;
 }
 
@@ -32,12 +30,9 @@
   position: absolute;
   left: 0;
   bottom: 0;
-
   width: 48px;
   height: 3px;
-
   background: linear-gradient(90deg, #0a6fb5, #084c8d);
-
   border-radius: 2px;
 }
 
@@ -86,19 +81,14 @@
 
 .logout-btn {
   margin-top: auto;
-
   padding: 14px 18px;
   border-radius: 12px;
-
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-
+  background: rgba(254, 0, 0, 0.15);
+  border: 3px solid rgba(255, 62, 62, 0.15);
   font-size: 1.05rem;
   font-weight: 600;
-
   color: #f2f4f6;
   cursor: pointer;
-
   transition:
     background 0.25s ease,
     border-color 0.25s ease,
@@ -121,6 +111,7 @@
 
   .admin-logo {
     font-size: 1.4rem;
+    margin-top: 55px;
   }
 
   .nav-item,

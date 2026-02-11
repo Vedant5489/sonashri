@@ -1,14 +1,64 @@
+<<<<<<< HEAD
 Sonashri Engineering & Solutions – Website
 
 This project is the official website for Sonashri Engineering & Solutions.
 It is designed to clearly present services, showcase real work through case studies, and manage enquiries through an admin panel.
+=======
+Skip to content
+Vedant5489
+sonashri
+Repository navigation
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Settings
+sonashri/
+Go to file
+t
+Vedant5489
+Vedant5489
+Add README for Sonashri Engineering & Solutions website
+b8ded84
+·
+1 minute ago
+sonashri/
+Name Last commit message Last commit date
+client
+Add case studies feature with admin publishing and UI refinements
+5 minutes ago
+server
+Add case studies feature with admin publishing and UI refinements
+5 minutes ago
+.gitignore
+Remove server node_modules from repo and add gitignore
+3 days ago
+README.md
+Add README for Sonashri Engineering & Solutions website
+1 minute ago
+README.md
+Sonashri Engineering & Solutions – Website
+
+This project is the official website for Sonashri Engineering & Solutions. It is designed to clearly present services, showcase real work through case studies, and manage enquiries through an admin panel.
+
+> > > > > > > d02bae3 (Training Form implemented, admin sidebar optimized)
 
 The website is fast, clean, and built to scale in the future.
 
 🌐 What This Website Includes
+<<<<<<< HEAD
+
 1. Public Website (For Visitors)
 
-This is what normal users and clients see.
+=======
+
+Public Website (For Visitors)
+
+> > > > > > > d02bae3 (Training Form implemented, admin sidebar optimized)
+> > > > > > > This is what normal users and clients see.
 
 🏠 Home Page
 
@@ -110,8 +160,13 @@ No clutter, no unnecessary effects
 
 Focus on clarity and usability
 
+<<<<<<< HEAD
 🧱 Technical Structure (Simple Explanation)
 Frontend (Client)
+=======
+🧱 Technical Structure (Simple Explanation) Frontend (Client)
+
+> > > > > > > d02bae3 (Training Form implemented, admin sidebar optimized)
 
 Built using React
 
@@ -201,5 +256,12 @@ Content scheduling
 
 🧠 Final Note
 
-This website is built to look professional, work smoothly, and grow with the business.
-Nothing is experimental or demo-quality — it is production-ready.
+<<<<<<< HEAD
+This website is built to look professional, work smoothly, and grow with the business. Nothing is experimental or demo-quality – it is production-ready.
+
+Training Form implemented and admin sidebar optimized.
+
+=======
+This website is built to look professional, work smoothly, and grow with the business. Nothing is experimental or demo-quality — it is production-ready.
+
+> > > > > > > d02bae3 (Training Form implemented, admin sidebar optimized)
