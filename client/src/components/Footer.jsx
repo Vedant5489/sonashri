@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import "../styles/footer.css";
 import logo from "../assets/logo.png";
 
@@ -34,34 +35,60 @@ export default function Footer() {
           <img src={logo} alt="Sonashri Engineering & Solutions" />
           <p>
             Precision-driven automotive product design, prototyping, and
-            engineering solutions built for the future.
+            engineering solutions built with reliability, performance, and
+            long-term value at the core.
           </p>
         </div>
 
-        {/* Links */}
+        {/* Quick Links */}
         <div className="footer-links">
           <h4>Quick Links</h4>
           <ul>
-            <li>Home</li>
-            <li>Services</li>
-            <li>Training & Career</li>
-            <li>Contact</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/services/product-design">
+                Product Design
+              </Link>
+            </li>
+            <li>
+              <Link to="/services/prototyping">
+                Prototyping
+              </Link>
+            </li>
+            <li>
+              <Link to="/training">Training & Career</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
           </ul>
         </div>
 
-        {/* Contact */}
+        {/* Contact Info */}
         <div className="footer-contact">
           <h4>Contact</h4>
           <p>Pune, Maharashtra, India</p>
-          <p>contact@sonashri.com</p>
-          <p>+91 9XXXXXXXXX</p>
+
+          <p>
+            <a href="mailto:info@sonashriengineering.com">
+              info@sonashriengineering.com
+            </a>
+          </p>
+
+          <p>
+            <a href="tel:+919876543210">
+              +91 98765 43210
+            </a>
+          </p>
         </div>
       </motion.div>
 
-      {/* Bottom bar */}
+      {/* Bottom Bar */}
       <div className="footer-bottom">
-        © {new Date().getFullYear()} Sonashri Engineering & Solutions. All rights
-        reserved.
+        © {new Date().getFullYear()} Sonashri Engineering & Solutions. 
+        All rights reserved.
       </div>
     </footer>
   );

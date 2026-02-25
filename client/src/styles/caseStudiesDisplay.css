@@ -78,21 +78,7 @@
   .csd-title {
     font-size: 2.2rem;
   }
-}
 
-@media (max-width: 600px) {
-  .csd-title {
-    font-size: 1.9rem;
-  }
-
-  .csd-subtitle {
-    font-size: 1.05rem;
-  }
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 900px) {
   .csd-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -100,10 +86,25 @@
 
 @media (max-width: 600px) {
   .case-studies-display {
-    padding: 3.5rem 1.2rem;
+    padding: 2.5rem 1rem;
+    background-color: #f7f9fc; /* subtle separation */
   }
 
   .csd-grid {
     grid-template-columns: 1fr;
+    gap: 1.2rem; /* reduced gap */
+  }
+
+  .csd-grid > * {
+    transform: scale(0.96);
+    transform-origin: top center;
+  }
+
+  .csd-title {
+    font-size: 1.8rem;
+  }
+
+  .csd-subtitle {
+    font-size: 1rem;
   }
 }

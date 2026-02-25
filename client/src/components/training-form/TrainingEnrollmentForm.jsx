@@ -63,7 +63,6 @@ const TrainingEnrollmentForm = () => {
       >
         <h2 className="section-title">
           Training Enrollment Form
-          <span className="brand-underline" />
         </h2>
 
         <p className="section-subtitle">

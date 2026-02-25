@@ -30,30 +30,7 @@
   margin: 0 auto 3.8rem;
 }
 
-.section-title {
-  position: relative;
-  display: inline-block;
-  font-size: 2.6rem;
-  font-weight: 600;
-  color: #1e1e1e;
-  line-height: 1.2;
-}
-
-/* Brand underline */
-.section-title::after {
-  content: "";
-  display: block;
-  width: 44px;
-  height: 3px;
-  background: #0a6fb5;
-  border-radius: 2px;
-  margin: 12px auto 0;
-  transition: width 0.35s ease;
-}
-
-.section-title:hover::after {
-  width: 72px;
-}
+/* ================= SECTION TITLE ================= */
 
 .section-subtitle {
   margin-top: 0.8rem;
@@ -169,10 +146,6 @@
     padding: 4rem 4vw 5rem;
   }
 
-  .section-title {
-    font-size: 2.2rem;
-  }
-
   .case-card-image {
     height: 170px;
   }
@@ -181,10 +154,6 @@
 @media (max-width: 600px) {
   .case-studies-page {
     padding: 3.2rem 1.2rem 4rem;
-  }
-
-  .section-title {
-    font-size: 1.9rem;
   }
 
   .section-subtitle {

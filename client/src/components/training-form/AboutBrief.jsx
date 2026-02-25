@@ -21,7 +21,6 @@ const AboutBrief = () => {
       >
         <h2 className="section-title">
           About Our Training
-          <span className="brand-underline" />
         </h2>
 
         <p className="section-subtitle">

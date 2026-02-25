@@ -15,19 +15,17 @@ export default function Navbar() {
 
   const isServicesActive = location.pathname.startsWith("/services");
   const isTrainingActive = location.pathname.startsWith("/training");
-  const isCaseStudiesActive =location.pathname.startsWith("/case-studies");
+  const isCaseStudiesActive = location.pathname.startsWith("/case-studies");
 
   return (
     <header className="navbar-wrapper">
       <nav className="navbar">
-        {/* Logo */}
         <div className="navbar-logo">
           <NavLink to="/" onClick={closeAll}>
             <img src={logo} alt="Sonashri Engineering & Solutions" />
           </NavLink>
         </div>
 
-        {/* Hamburger */}
         <div
           className={`hamburger ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -37,7 +35,6 @@ export default function Navbar() {
           <span />
         </div>
 
-        {/* Links */}
         <ul className={`navbar-links ${menuOpen ? "show" : ""}`}>
           <li>
             <NavLink to="/" onClick={closeAll}>
@@ -45,7 +42,7 @@ export default function Navbar() {
             </NavLink>
           </li>
 
-          {/* SERVICES DROPDOWN */}
+          {/* SERVICES */}
           <li
             className={`services-dropdown ${
               isServicesActive ? "active" : ""
@@ -62,39 +59,30 @@ export default function Navbar() {
 
             <ul className={`services-menu ${servicesOpen ? "open" : ""}`}>
               <li>
-                <NavLink
-                  to="/services/product-design"
-                  onClick={closeAll}
-                >
+                <NavLink to="/services/product-design" onClick={closeAll}>
                   Product Design
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/services/prototyping"
-                  onClick={closeAll}
-                >
+                <NavLink to="/services/prototyping" onClick={closeAll}>
                   Prototyping
                 </NavLink>
               </li>
             </ul>
           </li>
 
-          {/* CASE STUDIES */}
           <li className={isCaseStudiesActive ? "active" : ""}>
             <NavLink to="/case-studies" onClick={closeAll}>
               Case Studies
             </NavLink>
           </li>
 
-          {/* TRAINING */}
           <li className={isTrainingActive ? "active" : ""}>
             <NavLink to="/training" onClick={closeAll}>
               Training and Career
             </NavLink>
           </li>
 
-          {/* Contact */}
           <li>
             <NavLink
               to="/contact"

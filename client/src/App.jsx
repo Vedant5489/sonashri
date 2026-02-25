@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
+import ContactPage from "./pages/ContactPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Case Studies (Public)
 import CaseStudies from "./case-studies/pages/CaseStudies";
@@ -20,6 +22,7 @@ import TrainingForm from "./pages/TrainingForm";
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <Routes>
         {/* ================= PUBLIC ================= */}
         <Route path="/" element={<Home />} />
@@ -46,6 +49,7 @@ function App() {
           <Route path="training-requests" element={<TrainingRequests />} />
 
         </Route>
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </BrowserRouter>
   );

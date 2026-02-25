@@ -18,7 +18,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
 }
 
 /* =========================
@@ -43,7 +42,7 @@
   position: relative;
 }
 
-/* Anchor + Button base */
+/* Base Link Style */
 .navbar-links a,
 .services-trigger {
   position: relative;
@@ -54,99 +53,75 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding: 4px 0; /* improved vertical rhythm */
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
 }
 
-/* Underline */
+/* Underline Accent */
 .navbar-links a::after,
 .services-trigger::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -6px;
+  bottom: -1px; /* tighter alignment */
   width: 0%;
   height: 2px;
   background: var(--blue-primary);
-  transition: width 0.3s ease;
+  transition: width 0.25s ease;
 }
-
-/* Hover */
+/* Hover + Active */
 .navbar-links a:hover,
 .services-trigger:hover {
-  color: white;
+  color: #ffffff;
 }
 
 .navbar-links a:hover::after,
-.services-trigger:hover::after {
-  width: 100%;
-}
-
+.services-trigger:hover::after,
 .navbar-links a.active::after,
 .services-dropdown.active .services-trigger::after {
   width: 100%;
 }
 
 /* =========================
-   CHEVRON ARROW
+   CHEVRON
 ========================= */
 .chevron {
   width: 6px;
   height: 6px;
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
-  transform: rotate(45deg) translateY(-1px);
+  transform: rotate(45deg);
   transition: transform 0.25s ease;
 }
 
 .chevron.open {
-  transform: rotate(-135deg) translateY(2px);
-}
-
-/* =========================
-   CONTACT CTA
-========================= */
-.contact-btn {
-  padding: 0.45rem 1.1rem;
-  border-radius: 6px;
-  background: linear-gradient(135deg, var(--blue-primary), var(--blue-deep));
-  color: white !important;
-  font-weight: 600;
-}
-
-.contact-btn::after {
-  display: none;
-}
-
-.contact-btn:hover {
-  box-shadow: 0 6px 18px rgba(10, 111, 181, 0.35);
-  transform: translateY(-1px);
+  transform: rotate(-135deg);
 }
 
 /* =========================
    SERVICES DROPDOWN
 ========================= */
-
 .services-dropdown {
   position: relative;
 }
 
-/* Hover zone extender (IMPORTANT) */
+/* Hover gap bridge */
 .services-dropdown::after {
   content: "";
   position: absolute;
   top: 100%;
   left: 0;
-  height: 18px; /* bridges the gap */
+  height: 16px;
   width: 100%;
 }
 
+/* Dropdown Menu */
 .services-menu {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 10px);
   left: 0;
   min-width: 220px;
   background: #ffffff;
@@ -154,7 +129,7 @@
   padding: 0.6rem 0;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(8px);
   pointer-events: none;
   transition:
     opacity 0.25s ease,
@@ -162,12 +137,7 @@
   z-index: 200;
 }
 
-.services-dropdown:hover .services-menu {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
+.services-dropdown:hover .services-menu,
 .services-menu.open {
   opacity: 1;
   transform: translateY(0);
@@ -179,6 +149,9 @@
   padding: 0.75rem 1.4rem;
   font-size: 0.95rem;
   color: var(--black-graphite);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .services-menu a:hover {
@@ -199,7 +172,7 @@
 .hamburger span {
   width: 24px;
   height: 2px;
-  background: white;
+  background: #ffffff;
   transition: 0.3s ease;
 }
 
@@ -233,19 +206,37 @@
     align-items: flex-start;
     gap: 1.5rem;
     padding: 2rem;
-    display: none;
+
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    visibility: hidden;
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
   }
 
   .navbar-links.show {
-    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
   }
 
+  /* Mobile dropdown */
   .services-menu {
     position: static;
-    transform: none;
-    box-shadow: none;
     background: transparent;
+    box-shadow: none;
     padding-left: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .services-menu.open {
+    max-height: 200px;
   }
 
   .services-menu a {
@@ -255,7 +246,7 @@
 
   .services-menu a:hover {
     background: none;
-    color: white;
+    color: #ffffff;
   }
 
   .services-dropdown::after {

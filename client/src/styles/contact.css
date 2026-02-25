@@ -1,0 +1,513 @@
+/* =====================================================
+   CONTACT PAGE – ENTERPRISE CINEMATIC EDITION
+   Sonashri Engineering & Solutions
+===================================================== */
+
+:root {
+  --blue-primary: #0a6fb5;
+  --text-dark: #1e1e1e;
+  --text-light: #6e6e6e;
+  --bg-soft: #f8fafc;
+}
+
+/* =====================================================
+   SECTION WRAPPER
+===================================================== */
+
+.contact-section {
+  padding: 110px 0;
+  background: linear-gradient(180deg, #f4f8fc 0%, #a8bed4 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* =====================================================
+   FADE UP ON SCROLL
+===================================================== */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================
+   SECTION TITLES (Brand Underline System)
+===================================================== */
+
+/* Centered Section Title Variant */
+.section-title-center {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin-bottom: 5rem;
+}
+
+.section-title-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sub-title {
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 18px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.sub-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 36px;
+  height: 2px;
+  background: var(--blue-primary);
+  transition: width 0.3s ease;
+}
+
+.sub-title:hover::after {
+  width: 60px;
+}
+
+/* =====================================================
+   ABOUT HERO – FULL IMAGE VERSION
+===================================================== */
+
+.about-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* FULL SCREEN HEIGHT */
+  background: url("/client/src/assets/about-bg.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  margin: 0;
+}
+
+/* Dark cinematic overlay */
+.about-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(5, 15, 35, 0.75), rgba(5, 15, 35, 0.65));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+}
+
+/* Content container */
+.about-hero-content {
+  max-width: 900px;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Small top tag */
+.about-tag {
+  letter-spacing: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #bfc5cc;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+/* Main heading */
+.about-heading {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+/* Supporting text */
+.about-subtext {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #e5e9f0;
+}
+
+/* =====================================================
+   ABOUT CONTENT
+===================================================== */
+
+.about-content {
+  max-width: 1100px; /* wider content */
+  margin: 0 auto; /* center block */
+  text-align: left; /* keep text professional */
+}
+
+.about-content p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.about-content ul {
+  padding-left: 22px;
+  margin-bottom: 20px;
+}
+
+.about-content li {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* =====================================================
+   VISION / MISSION / GOAL – PREMIUM SVG VERSION
+===================================================== */
+
+.vmg-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin: 110px 0 90px;
+}
+
+.vmg-card {
+  background: #f2f4f6; /* Light Grey from palette */
+  padding: 50px 35px;
+  border-radius: 18px;
+  text-align: center;
+  transition: all 0.45s ease;
+  position: relative;
+}
+
+.vmg-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px rgba(10, 111, 181, 0.12);
+}
+
+/* SVG ICON */
+
+.vmg-icon {
+  margin-bottom: 22px;
+  color: #0a6fb5; /* Primary Blue */
+}
+
+.vmg-svg {
+  width: 56px;
+  height: 56px;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: stroke-dashoffset 2.8s cubic-bezier(0.25, 0.6, 0.9, 1.5);
+}
+
+/* Only animate when visible */
+.fade-up.visible .vmg-svg {
+  stroke-dashoffset: 0;
+}
+
+/* Ensure it resets when not visible */
+.fade-up:not(.visible) .vmg-svg {
+  stroke-dashoffset: 200;
+}
+
+.vmg-card:nth-child(2) .vmg-svg {
+  animation-delay: 0.2s;
+}
+
+.vmg-card:nth-child(3) .vmg-svg {
+  animation-delay: 0.4s;
+}
+
+@keyframes drawIcon {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* HEADINGS */
+
+.vmg-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1e1e1e;
+}
+
+/* PARAGRAPH */
+
+.vmg-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .vmg-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================================
+   VALUE DRIVERS – CINEMATIC SLIDER
+===================================================== */
+
+@keyframes cinematicEnter {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   VALUE DRIVERS – CLEAN FINAL VERSION
+===================================================== */
+
+.value-drivers-section {
+  margin: 140px 0;
+  text-align: center;
+}
+
+.value-slider {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+}
+
+.value-slide {
+  width: 100%;
+  max-width: 1000px;
+  opacity: 0;
+  transform: translateY(25px);
+  animation: slideFade 0.6s ease forwards;
+}
+
+@keyframes slideFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Layout */
+.value-content {
+  display: flex;
+  align-items: flex-start; /* locks icon position */
+  justify-content: center;
+  gap: 50px;
+}
+
+/* ================= ICON ================= */
+
+.value-icon {
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.value-svg {
+  width: 110px;
+  height: 110px;
+}
+
+/* ================= TEXT ================= */
+
+.value-text {
+  max-width: 700px;
+  text-align: left;
+  min-height: 120px; /* prevents shifting while typing */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.value-text h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.value-text p {
+  font-size: 19px;
+  line-height: 1.75;
+  color: #444;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .value-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .value-text {
+    text-align: center;
+    min-height: auto;
+  }
+
+  .value-svg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .value-text h3 {
+    font-size: 22px;
+  }
+
+  .value-text p {
+    font-size: 16px;
+  }
+}
+
+/* =====================================================
+   CLIENT STRIP – SMOOTH MARQUEE ANIMATION
+===================================================== */
+
+/* ================= CLIENT STRIP – ULTRA SMOOTH ================= */
+
+.clients-section {
+  margin-top: 130px;
+}
+
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 50px;
+  position: relative;
+}
+
+/* Fade-in only */
+.track-wrapper {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+
+.fade-up.visible .track-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Moving track */
+.track {
+  display: flex;
+  align-items: center;
+  gap: 90px;
+  width: max-content;
+}
+
+/* IMPORTANT: Remove any transition here */
+.track img {
+  height: 70px;
+  object-fit: contain;
+  filter: grayscale(40%);
+  opacity: 0.85;
+  flex-shrink: 0;
+  transition:
+    filter 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.track img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Left direction */
+.track.left {
+  animation: scrollLeft 35s linear infinite;
+}
+
+/* Right direction */
+.track.right {
+  animation: scrollRight 35s linear infinite;
+}
+
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+
+/* PERFECT seamless loop */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+  .vmg-section {
+    grid-template-columns: 1fr;
+  }
+
+  .vmg-card {
+    padding: 35px 24px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .value-slide h3 {
+    font-size: 18px;
+  }
+
+  .track {
+    gap: 50px;
+  }
+
+  .track img {
+    height: 50px;
+  }
+}

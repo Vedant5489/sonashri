@@ -157,17 +157,58 @@ h2 {
 }
 
 @media (max-width: 600px) {
+  /* Page spacing */
   .training-page {
-    padding-top: 95px;
+    padding-top: 85px;
   }
 
+  /* Section spacing */
+  .training-about {
+    padding: 45px 20px 35px;
+  }
+
+  .training-form-section {
+    padding: 50px 18px 65px;
+  }
+
+  /* Subtitle refinement */
+  .training-form-section .section-subtitle,
+  .training-about .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  /* Form card */
   .training-form {
-    padding: 24px;
+    padding: 22px 18px;
+    border-radius: 14px;
+    gap: 16px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.04);
   }
 
+  /* Inputs */
   .training-form input,
   .training-form textarea {
-    font-size: 0.85rem;
-    padding: 13px 15px;
+    font-size: 0.92rem;
+    padding: 14px 16px;
+    border-radius: 9px;
+  }
+
+  /* Textarea */
+  .training-form textarea {
+    min-height: 110px;
+  }
+
+  /* Button */
+  .training-form .btn-primary {
+    font-size: 0.92rem;
+    padding: 14px;
+  }
+
+  /* Heading adjustment */
+  h2 {
+    font-size: 1.7rem;
+    margin-bottom: 16px;
   }
 }
