@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import "../styles/contact.css";
+import aboutBg from "../assets/about-bg.png";
 
 /* ===== VALUE DRIVERS DATA ===== */
 const valueDrivers = [
@@ -36,32 +38,54 @@ const valueDrivers = [
     text: "Established processes and excellent project management skills ensuring error free delivery",
   },
 ];
+
+const heroVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 1.8, ease: "easeOut" },
+  },
+};
+
+const textVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: "easeOut" },
+  },
+};
 const Contact = () => {
   const [current, setCurrent] = useState(0);
   const [typedText, setTypedText] = useState("");
+  const typingSpeed = 35; // speed per character
 
-  /* ===== SLIDESHOW LOOP ===== */
+  // Typewriter and 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTypedText("");
+  let typingTimeout;
+  let slideTimeout;
+
+  const fullText = valueDrivers[current].text;
+
+  // 1️⃣ Typing logic
+  if (typedText.length < fullText.length) {
+    typingTimeout = setTimeout(() => {
+      setTypedText(fullText.slice(0, typedText.length + 1));
+    }, typingSpeed);
+  } 
+  // 2️⃣ When typing finishes → wait 1 second → change slide
+  else {
+    slideTimeout = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % valueDrivers.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
+      setTypedText(""); // reset for next slide
+    }, 1200);
+  }
 
-  /* ===== TYPEWRITER EFFECT ===== */
-  useEffect(() => {
-    let i = 0;
-    const text = valueDrivers[current].text;
-
-    const typing = setInterval(() => {
-      setTypedText(text.slice(0, i));
-      i++;
-      if (i > text.length) clearInterval(typing);
-    }, 35);
-
-    return () => clearInterval(typing);
-  }, [current]);
+  return () => {
+    clearTimeout(typingTimeout);
+    clearTimeout(slideTimeout);
+  };
+}, [typedText, current]);
 
   /* ===== FADE UP + MARQUEE ACTIVATION ===== */
   useEffect(() => {
@@ -87,31 +111,39 @@ const Contact = () => {
 }, []);
 
   return (
+    <>
+    {/* ================= HERO IMAGE SECTION ================= */}
+      <section className="contact-hero">
+        <motion.img
+          src={aboutBg}
+          alt="About Background"
+          className="contact-hero-image"
+          variants={heroVariants}
+          initial="hidden"
+          animate="visible"
+        />
+
+        <div className="contact-hero-overlay" />
+
+        <motion.div
+          className="contact-hero-content"
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <span className="contact-hero-tag">
+            SONASHRI ENGINEERING & SOLUTIONS
+          </span>
+
+          <h1 className="contact-hero-title">
+            About <span>Us</span>
+          </h1>
+
+          <div className="contact-hero-underline" />
+        </motion.div>
+      </section>
     <section className="contact-section">
       <div className="container">
-
-        <div className="about-hero fade-up">
-            <div className="about-overlay">
-
-              <div className="about-hero-content">
-                <span className="about-tag">ABOUT SONASHRI</span>
-
-                <h1 className="about-heading">
-                  Built on Precision.<br />
-                  Driven by Innovation.
-                </h1>
-
-                <p className="about-subtext">
-                  For over seven years, Sonashri Engineering & Solutions Pvt Ltd has been
-                  delivering high-impact engineering services to the global Mechanical
-                  and Automotive industry — transforming ideas into production-ready
-                  realities.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
         {/* ================= ABOUT ================= */}
         <div className="contact-header fade-up">          
 
@@ -352,6 +384,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

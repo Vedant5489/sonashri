@@ -17,13 +17,14 @@ export const prototypingData = {
     },
 
     overview: {
-        title: "Why Choose Our Prototyping Services",
+        title: "Why SES",
         points: [
-            "Rapid conversion of CAD designs into physical components",
-            "CNC machining aligned with production-grade tolerances",
-            "Early detection of design, fitment, and tolerance issues",
-            "Faster validation cycles reducing overall project timelines",
-            "Seamless transition from prototype to manufacturing",
+            "Accelerated time-to-market through agile engineering execution and rapid iteration cycles",
+            "Complete vehicle-level expertise spanning concept, design, validation, and production support",
+            "Flexible engagement models tailored to your project scope, timeline, and budget needs",
+            "Seamlessly integrate as an extension of your in-house engineering and R&D teams",
+            "Real-time manufacturing knowledge ensuring design feasibility and production readiness",
+            "Innovation-driven solutions focused on performance optimization and long-term value creation"
         ],
     },
 

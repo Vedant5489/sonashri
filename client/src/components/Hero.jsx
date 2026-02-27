@@ -75,11 +75,6 @@ export default function Hero() {
           Automotive product design, prototyping and manufacturing
           excellence—powered by innovation, automation and engineering rigor.
         </motion.p>
-
-        <motion.div className="hero-buttons" variants={textVariants}>
-          <button className="btn-primary">Our Services</button>
-          <button className="btn-secondary">Watch Our Work</button>
-        </motion.div>
       </motion.div>
     </section>
   );
