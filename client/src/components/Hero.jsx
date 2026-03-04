@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import "../styles/hero.css";
 import heroVideo from "../assets/hero-video/hero.mp4";
 import heroPoster from "../assets/hero-video/hero-poster.png";
+import { useEffect } from "react";
 
 const videoVariants = {
   hidden: { opacity: 0 },
@@ -39,6 +40,11 @@ const textVariants = {
 };
 
 export default function Hero() {
+
+  useEffect(() => {
+    document.title = "Sonashri Engineering and Solutions";
+  }, []);
+
   return (
     <section className="hero-section">
       {/* Background Video with Fade */}

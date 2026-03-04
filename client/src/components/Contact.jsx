@@ -60,6 +60,10 @@ const Contact = () => {
   const [typedText, setTypedText] = useState("");
   const typingSpeed = 35; // speed per character
 
+  useEffect(() => {
+    document.title = "About Us";
+  }, []);
+
   // Typewriter and 
   useEffect(() => {
   let typingTimeout;

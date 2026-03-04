@@ -18,6 +18,20 @@ app.get("/", (req, res) => {
     res.send("🚀 Sonashri API is running");
 });
 
+// HEALTH CHECK API FOR MONITOR
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "OK" });
+});
+
+app.get("/api/test500", (req, res) => {
+    res.status(500).json({ error: "Server exploded" });
+});
+
+app.get("/api/slow", async (req, res) => {
+    await new Promise(r => setTimeout(r, 1500));
+    res.json({ message: "Slow response" });
+});
+
 // ================= PUBLIC ROUTES =================
 app.use("/api/training", publicTrainingRoutes);
 app.use("/api/case-studies", publicCaseStudyRoutes);
