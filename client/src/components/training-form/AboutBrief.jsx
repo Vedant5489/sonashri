@@ -24,11 +24,7 @@ const AboutBrief = () => {
         </h2>
 
         <p className="section-subtitle">
-          We provide hands-on industry-oriented training designed to bridge
-          the gap between academic learning and real-world plant operations.
-          Our programs focus on practical exposure, digital tools, process
-          optimization, and professional discipline — preparing candidates to
-          confidently contribute in modern manufacturing environments.
+          We provide hands-on, industry-oriented training designed to bridge the gap between academic learning and real-world plant operations. Our programs combine practical shop-floor exposure with training in mechanical engineering software such as CAD-based design and digital engineering tools. By integrating technical skills, process understanding, and professional discipline, we prepare candidates to confidently contribute in modern manufacturing and product development environments.
         </p>
       </motion.div>
     </section>

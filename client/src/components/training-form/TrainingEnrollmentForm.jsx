@@ -66,8 +66,7 @@ const TrainingEnrollmentForm = () => {
         </h2>
 
         <p className="section-subtitle">
-          Fill in your details below to express your interest in joining our
-          industry training programs.
+          Submit your details to express interest in our industry-oriented mechanical design training; our team will respond via email, and strong candidates may be considered for future career opportunities with the company.
         </p>
 
         <form className="training-form" onSubmit={handleSubmit}>

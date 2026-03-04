@@ -16,6 +16,10 @@ const CaseStudies = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    document.title = "SES | Case Studies";
+  }, []);
+
+  useEffect(() => {
     fetchCaseStudies()
       .then((data) => {
         setAllStudies(data);

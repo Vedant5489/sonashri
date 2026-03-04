@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/whatWeOffer.css";
 
 import productDesignImg from "../assets/product-design.jpg";
-import prototypingImg from "../assets/prototyping.jpg";
+import prototypingImg from "../assets/prototyping.png";
 
 /* Motion-enabled Link */
 const MotionLink = motion(Link);

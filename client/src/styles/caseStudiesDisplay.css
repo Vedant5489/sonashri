@@ -85,26 +85,51 @@
 }
 
 @media (max-width: 600px) {
+  /* Section spacing */
+
   .case-studies-display {
-    padding: 2.5rem 1rem;
-    background-color: #f7f9fc; /* subtle separation */
+    padding: 2rem 0.9rem;
+    background-color: #f7f9fc;
   }
 
-  .csd-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem; /* reduced gap */
+  /* Header spacing */
+
+  .csd-header {
+    margin-bottom: 2rem;
   }
 
-  .csd-grid > * {
-    transform: scale(0.96);
-    transform-origin: top center;
-  }
+  /* Title */
 
   .csd-title {
     font-size: 1.8rem;
   }
 
+  /* Subtitle */
+
   .csd-subtitle {
-    font-size: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-top: 0.6rem;
+  }
+
+  /* Grid */
+
+  .csd-grid {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Slight card scaling for compact layout */
+
+  .csd-grid > * {
+    transform: scale(0.94);
+    transform-origin: top center;
+  }
+
+  /* CTA spacing */
+
+  .csd-cta {
+    margin-top: 2rem;
   }
 }

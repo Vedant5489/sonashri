@@ -1,0 +1,138 @@
+/* ================= CLIENT STRIP ================= */
+
+.clients-section {
+  margin-top: 130px;
+  padding: 40px 0; /* vertical breathing room */
+}
+
+/* marquee container */
+
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 50px;
+  position: relative;
+}
+
+/* fade-up animation wrapper */
+
+.track-wrapper {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+
+.fade-up.visible .track-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* scrolling track */
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 90px;
+  width: max-content;
+}
+
+/* client logos */
+
+.track img {
+  height: 70px;
+  object-fit: contain;
+  filter: grayscale(40%);
+  opacity: 0.85;
+  flex-shrink: 0;
+
+  transition:
+    filter 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.track img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* left scrolling */
+
+.track.left {
+  animation: scrollLeft 35s linear infinite;
+}
+
+/* right scrolling */
+
+.track.right {
+  animation: scrollRight 35s linear infinite;
+}
+
+/* pause on hover */
+
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+
+/* animations */
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* ================= MOBILE OPTIMIZATION ================= */
+
+@media (max-width: 768px) {
+  .clients-section {
+    margin-top: 30px;
+    padding: 24px 0;
+  }
+
+  .marquee {
+    margin-top: 24px;
+  }
+
+  .track {
+    gap: 32px; /* tighter logo spacing */
+  }
+
+  .track img {
+    height: 42px; /* smaller logos for mobile */
+    opacity: 0.9;
+  }
+
+  /* slower movement for readability */
+
+  .track.left {
+    animation: scrollLeft 45s linear infinite;
+  }
+
+  .track.right {
+    animation: scrollRight 45s linear infinite;
+  }
+
+  /* disable hover pause on mobile */
+
+  .marquee:hover .track {
+    animation-play-state: running;
+  }
+}

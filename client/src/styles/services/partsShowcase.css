@@ -1,0 +1,217 @@
+.parts-section {
+  padding: 5.5rem 2rem;
+  background: #ffffff;
+}
+
+.parts-container {
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* Title */
+
+.parts-title {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto 3rem;
+
+  font-size: clamp(2.4rem, 3vw, 2.8rem);
+  font-weight: 700;
+
+  color: var(--black-graphite);
+
+  padding-bottom: 0.7rem;
+}
+
+.parts-title::after {
+  content: "";
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 64px;
+  height: 3px;
+
+  background: var(--blue-primary);
+
+  transform: translateX(-50%);
+  transition: width 0.35s ease;
+}
+
+.parts-title:hover::after {
+  width: 96px;
+}
+
+/* Slider */
+
+.parts-slider {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #f7f9fc;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.16);
+}
+
+/* Image */
+
+.parts-slider img {
+  width: 100%;
+  height: 520px;
+  object-fit: contain; /* IMPORTANT: prevents cropping */
+  display: block;
+  padding: 20px;
+  background: #ffffff;
+}
+
+/* Overlay text */
+
+.parts-overlay {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #ffffff;
+
+  padding: 10px 16px;
+  border-radius: 8px;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Arrows */
+
+.parts-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(255, 255, 255, 0.95);
+  color: #0a6fb5;
+
+  font-size: 24px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  transition: all 0.25s ease;
+}
+
+.parts-arrow:hover {
+  background: #0a6fb5;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.parts-arrow.left {
+  left: 18px;
+}
+
+.parts-arrow.right {
+  right: 18px;
+}
+
+/* Pagination */
+
+.parts-pagination {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 10px;
+}
+
+.parts-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: #bfc5cc;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.parts-dot.active {
+  background: #0a6fb5;
+  transform: scale(1.25);
+}
+
+/* ======================
+   MOBILE OPTIMIZATION
+====================== */
+
+/* ======================
+   MOBILE OPTIMIZATION
+====================== */
+
+@media (max-width: 768px) {
+  .parts-section {
+    padding: 2.4rem 1rem;
+  }
+
+  .parts-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .parts-slider {
+    border-radius: 14px;
+  }
+
+  .parts-slider img {
+    height: 220px; /* smaller but still readable */
+    padding: 10px;
+    object-fit: contain;
+  }
+
+  .parts-overlay {
+    font-size: 0.95rem;
+    bottom: 34px;
+    left: 12px;
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+
+  /* Pagination */
+
+  .parts-pagination {
+    bottom: 8px;
+    gap: 6px;
+  }
+
+  .parts-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .parts-dot.active {
+    transform: scale(1.15);
+  }
+
+  /* Hide arrows (swipe UX) */
+
+  .parts-arrow {
+    display: none;
+  }
+
+  .parts-slider {
+    touch-action: pan-y;
+  }
+}

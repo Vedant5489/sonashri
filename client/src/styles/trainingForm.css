@@ -41,7 +41,7 @@ h2 {
 /* Improve subtitle spacing */
 .training-form-section .section-subtitle,
 .training-about .section-subtitle {
-  max-width: 700px;
+  max-width: 1200px;
   margin: 0 auto 45px;
   line-height: 1.7;
   color: #6e6e6e;
@@ -54,16 +54,13 @@ h2 {
   padding: 40px 45px;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 22px;
-
   max-width: 850px;
   margin: 0 auto;
 }
 
-/* Make textarea + button full width */
 .training-form textarea,
 .training-form button {
   grid-column: span 2;
@@ -158,57 +155,70 @@ h2 {
 
 @media (max-width: 600px) {
   /* Page spacing */
+
   .training-page {
-    padding-top: 85px;
+    padding-top: 80px;
   }
 
-  /* Section spacing */
+  /* About section */
+
   .training-about {
-    padding: 45px 20px 35px;
+    padding: 35px 18px 28px;
   }
+
+  .training-about .section-subtitle {
+    font-size: 0.9rem; /* smaller text for brief section */
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  /* Form section */
 
   .training-form-section {
-    padding: 50px 18px 65px;
+    padding: 40px 16px 55px;
   }
 
-  /* Subtitle refinement */
-  .training-form-section .section-subtitle,
-  .training-about .section-subtitle {
-    font-size: 0.95rem;
-    margin-bottom: 30px;
-    line-height: 1.6;
+  .training-form-section .section-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 26px;
+    line-height: 1.55;
   }
 
   /* Form card */
+
   .training-form {
-    padding: 22px 18px;
-    border-radius: 14px;
-    gap: 16px;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.04);
+    padding: 20px 16px;
+    border-radius: 12px;
+    gap: 14px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
   }
 
   /* Inputs */
+
   .training-form input,
   .training-form textarea {
-    font-size: 0.92rem;
-    padding: 14px 16px;
-    border-radius: 9px;
+    font-size: 0.88rem;
+    padding: 12px 14px;
+    border-radius: 8px;
   }
 
   /* Textarea */
+
   .training-form textarea {
-    min-height: 110px;
+    min-height: 95px;
   }
 
   /* Button */
+
   .training-form .btn-primary {
-    font-size: 0.92rem;
-    padding: 14px;
+    font-size: 0.9rem;
+    padding: 13px;
   }
 
-  /* Heading adjustment */
+  /* Headings */
+
   h2 {
-    font-size: 1.7rem;
-    margin-bottom: 16px;
+    font-size: 1.55rem;
+    margin-bottom: 14px;
   }
 }

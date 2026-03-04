@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "../styles/contact.css";
 import aboutBg from "../assets/about-bg.png";
+import ClientsStrip from "./ClientsStrip";
 
 /* ===== VALUE DRIVERS DATA ===== */
 const valueDrivers = [
@@ -335,57 +336,7 @@ const Contact = () => {
         </div>
 
         {/* ================= CLIENT STRIP ================= */}
-        <div className="clients-section fade-up">
-          <h2 className="section-title section-title-center">
-            Our Valuable Clients
-          </h2>
-
-          <div className="marquee">
-            <div className="track-wrapper">
-              <div className="track left">
-                <img src="/clients/hinduja.png" alt="" />
-                <img src="/clients/renault.png" alt="" />
-                <img src="/clients/tvs.png" alt="" />
-                <img src="/clients/philips.png" alt="" />
-                <img src="/clients/john.png" alt="" />
-                <img src="/clients/mahindra.png" alt="" />
-                <img src="/clients/jbm.png" alt="" />
-
-                {/* Duplicate for seamless loop */}
-                <img src="/clients/hinduja.png" alt="" />
-                <img src="/clients/renault.png" alt="" />
-                <img src="/clients/tvs.png" alt="" />
-                <img src="/clients/philips.png" alt="" />
-                <img src="/clients/john.png" alt="" />
-                <img src="/clients/mahindra.png" alt="" />
-                <img src="/clients/jbm.png" alt="" />
-              </div>
-            </div>
-          </div>
-
-          <div className="marquee">
-            <div className="track-wrapper">
-              <div className="track right">
-                <img src="/clients/3dp.png" alt="" />
-                <img src="/clients/avl.png" alt="" />
-                <img src="/clients/cummins.png" alt="" />
-                <img src="/clients/suzuki.png" alt="" />
-                <img src="/clients/magna.png" alt="" />
-                <img src="/clients/eka.png" alt="" />
-                <img src="/clients/ather.png" alt="" />
-
-                {/* Duplicate */}
-                <img src="/clients/3dp.png" alt="" />
-                <img src="/clients/avl.png" alt="" />
-                <img src="/clients/cummins.png" alt="" />
-                <img src="/clients/suzuki.png" alt="" />
-                <img src="/clients/magna.png" alt="" />
-                <img src="/clients/eka.png" alt="" />
-                <img src="/clients/ather.png" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
+        <ClientsStrip />
       </div>
     </section>
     </>

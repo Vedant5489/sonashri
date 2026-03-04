@@ -139,20 +139,158 @@
   max-width: 480px;
 }
 
+/* Slideshow Pagination */
+
+.capability-pagination {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.pagination-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff90;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-dot.active {
+  background: #0a6fb5;
+  transform: scale(1.2);
+}
+
 /* =========================
-   RESPONSIVE
+   SLIDE ARROWS
 ========================= */
-@media (max-width: 900px) {
+
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.9);
+  color: #0a6fb5;
+  font-size: 20px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+
+  transition: all 0.25s ease;
+  z-index: 2;
+}
+
+.slide-arrow:hover {
+  background: #0a6fb5;
+  color: white;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.slide-arrow.left {
+  left: 12px;
+}
+
+.slide-arrow.right {
+  right: 12px;
+}
+
+.capability-list {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+  line-height: 1.7;
+  color: var(--grey-steel);
+}
+
+.capability-list li {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+/* =========================
+   MOBILE OPTIMIZATION
+========================= */
+
+/* MOBILE OPTIMIZATION */
+
+@media (max-width: 768px) {
+  .capability-section {
+    padding: 2.2rem 1rem;
+  }
+
+  .capability-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .capability-tabs {
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .capability-tab {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
   .capability-content {
     grid-template-columns: 1fr;
-    gap: 2.6rem;
+    gap: 1.2rem;
   }
 
   .capability-image-frame img {
-    height: 280px;
+    height: 200px;
+    object-fit: contain;
+    background: #f4f6f8;
+  }
+
+  .capability-text {
+    max-height: 140px;
+    overflow-y: auto;
+    padding-right: 6px;
+  }
+
+  .capability-text h3 {
+    font-size: 1.1rem;
   }
 
   .capability-text p {
-    max-width: 100%;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .capability-list {
+    padding-left: 1rem;
+  }
+
+  .capability-list li {
+    font-size: 0.88rem;
+  }
+
+  .slide-arrow {
+    display: none;
+  }
+
+  .capability-pagination {
+    bottom: 8px;
+    gap: 6px;
+  }
+
+  .pagination-dot {
+    width: 7px;
+    height: 7px;
   }
 }

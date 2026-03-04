@@ -3,8 +3,16 @@ import { prototypingData } from "../data/prototyping";
 import { useEffect } from "react";
 
 export default function Prototyping() {
+
   useEffect(() => {
-    document.title = "SES | Product Design";
+    document.title = "SES | Prototyping";
   }, []);
-  return <ServicesLayout data={prototypingData} />;
+
+  return (
+    <ServicesLayout
+      data={prototypingData}
+      showParts={true}
+      showClients={true}
+    />
+  );
 }

@@ -151,17 +151,78 @@
   }
 }
 
+/* ================= MOBILE OPTIMIZATION ================= */
+
 @media (max-width: 600px) {
+  /* Page wrapper */
+
   .case-studies-page {
-    padding: 3.2rem 1.2rem 4rem;
+    padding: 2.2rem 1rem 2.8rem;
+  }
+
+  /* Header spacing */
+
+  .section-header {
+    margin-bottom: 1.6rem;
   }
 
   .section-subtitle {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 
+  /* Grid */
+
+  .case-grid {
+    gap: 1rem;
+  }
+
+  /* Card */
+
+  .case-card {
+    border-radius: 10px;
+  }
+
+  /* Image */
+
   .case-card-image {
-    height: 160px;
+    height: 130px;
+  }
+
+  .case-card-image img {
+    object-fit: cover;
+  }
+
+  /* Card content */
+
+  .case-card-content {
+    padding: 0.9rem 0.9rem 1rem;
+  }
+
+  .case-category {
+    font-size: 0.65rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .case-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .case-summary {
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
+  /* Load more */
+
+  .load-more-wrapper {
+    margin-top: 1.8rem;
+  }
+
+  .load-more-btn {
+    padding: 0.65rem 1.6rem;
+    font-size: 0.85rem;
   }
 }
 

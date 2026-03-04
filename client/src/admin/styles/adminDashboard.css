@@ -104,6 +104,73 @@
   }
 }
 
+/* ================= MOBILE OPTIMIZATION ================= */
+
+@media (max-width: 600px) {
+  /* Dashboard wrapper */
+
+  .admin-dashboard {
+    padding: 22px 16px;
+  }
+
+  /* Hero */
+
+  .dashboard-hero {
+    margin-bottom: 28px;
+    gap: 12px;
+  }
+
+  .dashboard-hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .dashboard-subtitle {
+    font-size: 1rem;
+  }
+
+  /* Date pill */
+
+  .dashboard-date {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+    gap: 8px;
+  }
+
+  .dashboard-time {
+    font-weight: 600;
+  }
+
+  /* Cards */
+
+  .dashboard-cards {
+    gap: 16px;
+  }
+
+  .dashboard-card {
+    padding: 22px;
+    border-radius: 16px;
+  }
+
+  /* Icon */
+
+  .card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+  }
+
+  /* Card text */
+
+  .dashboard-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+  }
+
+  .dashboard-card p {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+}
+
 /* ================= ANIMATION ================= */
 
 @keyframes fadeIn {

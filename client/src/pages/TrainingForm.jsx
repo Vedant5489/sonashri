@@ -8,7 +8,7 @@ import { useEffect } from "react";
 const TrainingForm = () => {
 
   useEffect(() => {
-    document.title = "SES | Training Form";
+    document.title = "SES | Training";
   }, []);
 
   return (
