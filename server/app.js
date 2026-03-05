@@ -7,6 +7,8 @@ import publicCaseStudyRoutes from "./routes/public/caseStudy.routes.js";
 import adminTrainingRoutes from "./routes/admin/training.routes.js";
 import adminCaseStudyRoutes from "./routes/admin/caseStudy.routes.js";
 import adminAuthRoutes from "./routes/admin/auth.routes.js";
+import cloudinaryTestRoutes from "./routes/cloudinaryTest.routes.js";
+
 
 const app = express();
 
@@ -22,6 +24,8 @@ app.get("/", (req, res) => {
 app.get("/health", (req, res) => {
     res.status(200).json({ status: "OK" });
 });
+
+app.use("/api", cloudinaryTestRoutes);
 
 app.get("/api/test500", (req, res) => {
     res.status(500).json({ error: "Server exploded" });
