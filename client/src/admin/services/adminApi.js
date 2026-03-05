@@ -1,4 +1,5 @@
-const API_BASE = "http://localhost:5000/api/admin";
+// API_BASE UPDATED TO CONNECT DIRECTLY TO BACKEND RUNNING ON RENDER (WHICH IS ALREADY CONNECTED TO MYSQL RAILWAY)
+const API_BASE = "https://sonashri-api.onrender.com";
 
 /* ================= AUTH HEADER ================= */
 

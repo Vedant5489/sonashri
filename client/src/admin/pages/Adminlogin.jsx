@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 import "../styles/adminLogin.css";
 
 const AdminLogin = () => {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,7 +29,7 @@ const AdminLogin = () => {
 
     try {
       const res = await fetch(
-        "http://localhost:5000/api/admin/auth/login",
+        `${BASE_URL}/api/admin/auth/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
