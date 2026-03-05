@@ -147,6 +147,7 @@ const Contact = () => {
           <div className="contact-hero-underline" />
         </motion.div>
       </section>
+      
     <section className="contact-section">
       <div className="container">
         {/* ================= ABOUT ================= */}

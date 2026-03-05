@@ -8,7 +8,7 @@ const handleLogout = () => {
   window.location.href = "/admin/login";
 };
 
-const handleNavClick = () => {
+const handleNavClick = (setOpen) => {
   if (window.innerWidth < 992) {
     setOpen(false);
   }
@@ -20,25 +20,38 @@ const AdminSidebar = ({ open, setOpen }) => {
       <h2 className="admin-logo">Sonashri Admin</h2>
 
       <nav className="admin-nav">
-        <NavLink to="/admin" end className="nav-item" onClick={handleNavClick}>
+        <NavLink
+          to="/admin"
+          end
+          className="nav-item"
+          onClick={() => handleNavClick(setOpen)}
+        >
           Dashboard
         </NavLink>
 
-        <NavLink to="/admin/training-requests" className="nav-item" onClick={handleNavClick}>
+        <NavLink
+          to="/admin/training-requests"
+          className="nav-item"
+          onClick={() => handleNavClick(setOpen)}
+        >
           Training Requests
         </NavLink>
 
-        <NavLink to="/admin/case-studies" className="nav-item" onClick={handleNavClick}>
+        <NavLink
+          to="/admin/case-studies"
+          className="nav-item"
+          onClick={() => handleNavClick(setOpen)}
+        >
           Case Studies
         </NavLink>
-      </nav>
 
-      <button className="logout-btn" onClick={handleLogout}>
-        Logout
-      </button>
+        {/* Logout as nav item */}
+        <button className="nav-item logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      </nav>
     </div>
   );
 };
-
 
 export default AdminSidebar;

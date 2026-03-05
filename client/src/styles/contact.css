@@ -373,21 +373,26 @@
 ===================================================== */
 
 .value-drivers-section {
-  margin: 140px 0;
+  margin: 110px 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .value-slider {
-  margin-top: 70px;
+  margin-top: 55px;
   display: flex;
   justify-content: center;
-  min-height: 260px;
+  align-items: center;
+  min-height: 140px;
+  width: 100%;
 }
 
 .value-slide {
   width: 100%;
-  max-width: 1000px;
-  min-height: 260px;
+  max-width: 900px;
+  min-height: 140px;
   opacity: 0;
   transform: translateY(25px);
   animation: slideFade 0.6s ease forwards;
@@ -404,9 +409,9 @@
 /* Layout */
 .value-content {
   display: flex;
-  align-items: flex-start; /* locks icon position */
+  align-items: flex-start;
   justify-content: center;
-  gap: 50px;
+  gap: 36px; /* tighter layout */
 }
 
 /* ================= ICON ================= */
@@ -428,9 +433,9 @@
 /* ================= TEXT ================= */
 
 .value-text {
-  max-width: 700px;
+  max-width: 640px;
   text-align: left;
-  min-height: 170px;
+  min-height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -586,6 +591,9 @@
 }
 
 @media (max-width: 768px) {
+  .contact-hero {
+    height: 90dvh;
+  }
   .contact-section {
     padding: 80px 0;
   }
@@ -607,14 +615,15 @@
   }
 
   .value-slider {
-    min-height: 320px;
+    min-height: 120px;
   }
 
   .value-slide {
-    min-height: 320px;
+    min-height: 120px;
   }
 
   .value-text {
-    min-height: 200px;
+    min-height: 100px;
+    text-align: center;
   }
 }

@@ -4,6 +4,7 @@ import {
   updateTrainingStatus,
 } from "../services/adminApi";
 import "../styles/trainingRequests.css";
+import Loader from "../../components/Loader"
 
 const statuses = ["NEW", "CONTACTED", "REJECTED", "CONVERTED"];
 
@@ -33,7 +34,7 @@ const TrainingRequests = () => {
     loadRequests(); // simple + safe
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader/>;
 
   return (
     <div className="training-requests">
@@ -69,7 +70,6 @@ const TrainingRequests = () => {
           </select>
         </div>
       </div>
-
 
       <div className="training-table-wrapper">
         <table className="training-table">

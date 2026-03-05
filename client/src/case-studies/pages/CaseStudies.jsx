@@ -41,6 +41,7 @@ const CaseStudies = () => {
       </>
     );
   }
+
   if (error) return <p>Failed to load case studies.</p>;
 
   return (
@@ -51,7 +52,7 @@ const CaseStudies = () => {
           <CaseStudiesHeader />
 
           <CaseStudiesGrid
-          studies={allStudies.slice(0, visibleCount)}
+            studies={allStudies.slice(0, visibleCount)}
           />
 
           {visibleCount < allStudies.length && (

@@ -80,7 +80,7 @@
   }
 
   .hero-section {
-    height: 70vh;
+    height: 90dvh;
     background: url("../assets//hero-video/hero-poster.png") center / cover
       no-repeat;
   }
