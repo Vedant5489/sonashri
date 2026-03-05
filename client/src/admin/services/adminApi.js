@@ -26,7 +26,7 @@ const handleResponse = async (res) => {
 /* ================= TRAINING ================= */
 
 export const fetchTrainingRequests = async () => {
-    const res = await fetch(`${API_BASE}/training`, {
+    const res = await fetch(`${API_BASE}/api/admin/training`, {
         headers: {
             ...getAuthHeaders(),
         },
@@ -36,7 +36,7 @@ export const fetchTrainingRequests = async () => {
 };
 
 export const updateTrainingStatus = async (id, status) => {
-    const res = await fetch(`${API_BASE}/training/${id}/status`, {
+    const res = await fetch(`${API_BASE}/api/admin/training/${id}/status`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json", // ✅ REQUIRED
@@ -51,7 +51,7 @@ export const updateTrainingStatus = async (id, status) => {
 /* ================= CASE STUDIES ================= */
 
 export const fetchCaseStudies = async () => {
-    const res = await fetch(`${API_BASE}/case-studies`, {
+    const res = await fetch(`${API_BASE}/api/admin/case-studies`, {
         headers: {
             ...getAuthHeaders(), // 🔐 REQUIRED
         },
@@ -73,7 +73,7 @@ export const createCaseStudy = async (data) => {
         formData.append("cover_image", data.cover_image);
     }
 
-    const res = await fetch(`${API_BASE}/case-studies`, {
+    const res = await fetch(`${API_BASE}/api/admin/case-studies`, {
         method: "POST",
         headers: {
             ...getAuthHeaders(), // 🔐 REQUIRED (WAS MISSING ❌)
@@ -93,7 +93,7 @@ export const updateCaseStudy = async (id, data) => {
         }
     });
 
-    const res = await fetch(`${API_BASE}/case-studies/${id}`, {
+    const res = await fetch(`${API_BASE}/api/admin/case-studies/${id}`, {
         method: "PUT",
         headers: {
             ...getAuthHeaders(), // 🔐 REQUIRED (WAS MISSING ❌)
@@ -105,7 +105,7 @@ export const updateCaseStudy = async (id, data) => {
 };
 
 export const toggleCaseStudyPublish = async (id) => {
-    const res = await fetch(`${API_BASE}/case-studies/${id}/publish`, {
+    const res = await fetch(`${API_BASE}/api/admin/case-studies/${id}/publish`, {
         method: "PATCH",
         headers: {
             ...getAuthHeaders(), // 🔐 REQUIRED (WAS MISSING ❌)

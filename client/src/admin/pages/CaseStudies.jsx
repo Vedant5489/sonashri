@@ -116,8 +116,6 @@ const CaseStudies = () => {
     toast("Editing case study");
   };
 
-
-
   /* ================= PUBLISH ================= */
 
   const handlePublishToggle = async (id) => {
