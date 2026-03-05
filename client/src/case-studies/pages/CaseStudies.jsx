@@ -5,6 +5,7 @@ import CaseStudiesHeader from "../components/CaseStudiesHeader";
 import CaseStudiesGrid from "../components/CaseStudiesGrid";
 import { CASE_STUDY_LAYOUT } from "../config/caseStudiesConfig";
 import { fetchCaseStudies } from "../../api/caseStudies.api";
+import Loader from "../../components/Loader";
 import "../styles/caseStudies.css";
 
 const CaseStudies = () => {
@@ -31,7 +32,15 @@ const CaseStudies = () => {
       });
   }, []);
 
-  if (loading) return <p>Loading case studies...</p>;
+  if (loading) {
+    return (
+      <>
+        <Navbar />
+        <Loader />
+        <Footer />
+      </>
+    );
+  }
   if (error) return <p>Failed to load case studies.</p>;
 
   return (

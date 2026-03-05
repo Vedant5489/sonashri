@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 const CaseStudyCard = ({ study }) => {
+
+  const imageSrc = study.cover_image
+    ? study.cover_image.startsWith("http")
+      ? study.cover_image
+      : `${API_BASE}${study.cover_image}`
+    : "https://placehold.co/600x400/1E1E1E/BFC5CC?text=Sonashri+Case+Study";
+
   return (
     <Link to={`/case-studies/${study.id}`} className="case-card">
       <div className="case-card-image">
-        <img
-          src={
-            study.cover_image
-              ? `${API_BASE}${study.cover_image}`
-              : "/placeholder.jpg"
-          }
-          alt={study.title}
-        />
+        <img src={imageSrc} alt={study.title} />
       </div>
 
       <div className="case-card-content">

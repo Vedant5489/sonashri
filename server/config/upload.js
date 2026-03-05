@@ -1,5 +1,7 @@
 import multer from "multer";
 import path from "path";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+import cloudinary from "./cloudinary.js";
 
 const slugify = (text) =>
     text
@@ -7,14 +9,21 @@ const slugify = (text) =>
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/(^-|-$)+/g, "");
 
-const storage = multer.diskStorage({
-    destination: "uploads/case-studies",
-    filename: (req, file, cb) => {
+const storage = new CloudinaryStorage({
+    cloudinary,
+    params: async (req, file) => {
         const title = req.body.title || "case-study";
         const slug = slugify(title);
         const ext = path.extname(file.originalname);
 
-        cb(null, `${slug}-${Date.now()}${ext}`);
+        return {
+            folder: "sonashri/case-studies",
+            public_id: `${slug}-${Date.now()}`,
+            format: ext.replace(".", ""),
+            transformation: [
+                { quality: "auto", fetch_format: "auto" }
+            ]
+        };
     },
 });
 

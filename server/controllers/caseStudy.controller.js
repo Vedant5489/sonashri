@@ -1,6 +1,4 @@
 import db from "../config/db.js";
-import fs from "fs";
-import path from "path";
 /**
  * ADMIN: Get all case studies (published + drafts)
  */
@@ -38,9 +36,7 @@ export const createCaseStudy = async (req, res) => {
             return res.status(400).json({ message: "Required fields missing" });
         }
 
-        const coverImage = req.file
-            ? `/uploads/case-studies/${req.file.filename}`
-            : null;
+        const coverImage = req.file ? req.file.path : null;
 
         await db.execute(
             `
@@ -81,20 +77,7 @@ export const updateCaseStudy = async (req, res) => {
         let newCoverImage = existing.cover_image;
 
         if (req.file) {
-            newCoverImage = `/uploads/case-studies/${req.file.filename}`;
-
-            if (existing.cover_image) {
-                const oldPath = path.join(
-                    process.cwd(),
-                    existing.cover_image.replace("/", "")
-                );
-
-                fs.unlink(oldPath, (err) => {
-                    if (err) {
-                        console.warn("Failed to delete old image:", err.message);
-                    }
-                });
-            }
+            newCoverImage = req.file.path;
         }
 
         // 3️⃣ Update DB

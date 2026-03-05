@@ -381,11 +381,13 @@
   margin-top: 70px;
   display: flex;
   justify-content: center;
+  min-height: 260px;
 }
 
 .value-slide {
   width: 100%;
   max-width: 1000px;
+  min-height: 260px;
   opacity: 0;
   transform: translateY(25px);
   animation: slideFade 0.6s ease forwards;
@@ -428,7 +430,7 @@
 .value-text {
   max-width: 700px;
   text-align: left;
-  min-height: 120px; /* prevents shifting while typing */
+  min-height: 170px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -444,6 +446,7 @@
   font-size: 19px;
   line-height: 1.75;
   color: #444;
+  overflow-wrap: break-word;
 }
 
 /* ================= MOBILE ================= */
@@ -601,5 +604,17 @@
 
   .track img {
     height: 50px;
+  }
+
+  .value-slider {
+    min-height: 320px;
+  }
+
+  .value-slide {
+    min-height: 320px;
+  }
+
+  .value-text {
+    min-height: 200px;
   }
 }
