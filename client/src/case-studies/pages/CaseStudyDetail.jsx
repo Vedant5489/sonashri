@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { fetchCaseStudyById } from "../../api/caseStudies.api";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
-
 const CaseStudyDetail = () => {
   const { id } = useParams();
   const [study, setStudy] = useState(null);
@@ -30,7 +28,7 @@ const CaseStudyDetail = () => {
 
         {study.cover_image && (
           <img
-            src={`${API_BASE}${study.cover_image}`}
+            src={study.cover_image}
             alt={study.title}
           />
         )}
