@@ -25,7 +25,7 @@ app.get("/health", (req, res) => {
     res.status(200).json({ status: "OK" });
 });
 // DATABASE HEALTH CHECK API FOR health check script
-router.get("/db-health", async (req, res) => {
+app.get("/db-health", async (req, res) => {
     try {
         await db.query("SELECT 1");
         res.status(200).json({ status: "ok" });
