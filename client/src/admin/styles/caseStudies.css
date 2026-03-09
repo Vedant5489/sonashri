@@ -147,6 +147,9 @@
 }
 
 .btn-danger {
+  padding: 7px;
+  margin: 5px;
+  border-radius: 10px;
   background: #d11a2a;
   color: white;
   border: none;
