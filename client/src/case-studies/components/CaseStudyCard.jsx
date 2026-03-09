@@ -20,8 +20,13 @@ const CaseStudyCard = ({ study }) => {
         {study.category && (
           <span className="case-category">{study.category}</span>
         )}
+
         <h3 className="case-title">{study.title}</h3>
-        <p className="case-summary">{study.summary}</p>
+
+        <p className="case-summary">
+          {study.summary}
+          <span className="case-read-more"> Read more →</span>
+        </p>
       </div>
     </Link>
   );

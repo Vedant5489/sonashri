@@ -1,7 +1,7 @@
 /* ================= ROOT ================= */
 
 .admin-login-wrapper {
-  min-height: 100vh;
+  min-height: 90vh;
   background: linear-gradient(135deg, #0a6fb5, #084c8d, #1e1e1e);
   display: flex;
   align-items: center;
@@ -121,6 +121,64 @@
   cursor: not-allowed;
 }
 
+/* ================= TABLET OPTIMIZATION ================= */
+
+@media (max-width: 1024px) {
+  .admin-login-wrapper {
+    padding: 28px;
+  }
+
+  .admin-login-overlay {
+    max-width: 900px;
+    min-height: 480px;
+
+    /* slightly more balanced columns */
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  /* Left panel */
+
+  .admin-login-left {
+    padding: 48px;
+  }
+
+  .admin-login-left h1 {
+    font-size: 2.3rem;
+  }
+
+  .admin-login-left p {
+    font-size: 1.1rem;
+  }
+
+  /* Login card */
+
+  .admin-login-card {
+    padding: 40px;
+  }
+
+  .admin-login-title {
+    font-size: 1.8rem;
+  }
+
+  .admin-login-subtitle {
+    font-size: 1rem;
+    margin-bottom: 26px;
+  }
+
+  /* Inputs */
+
+  .admin-login-input {
+    font-size: 1rem;
+    padding: 13px 15px;
+  }
+
+  /* Button */
+
+  .admin-login-button {
+    font-size: 1.05rem;
+    padding: 13px;
+  }
+}
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 900px) {
@@ -138,7 +196,7 @@
   }
 
   .admin-login-card {
-    padding: 40px;
+    padding: 20px;
   }
 }
 

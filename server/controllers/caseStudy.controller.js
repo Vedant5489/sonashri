@@ -1,4 +1,6 @@
 import db from "../config/db.js";
+import cloudinary from "../config/cloudinary.js";
+
 /**
  * ADMIN: Get all case studies (published + drafts)
  */
@@ -57,36 +59,70 @@ export const createCaseStudy = async (req, res) => {
 /**
  * ADMIN: Update case study
  */
+/**
+ * ADMIN: Update case study
+ * If new image uploaded:
+ * 1. delete old Cloudinary image
+ * 2. save new image
+ */
 export const updateCaseStudy = async (req, res) => {
     try {
+
         const { id } = req.params;
         const { title, summary, content, category } = req.body;
         const isPublished = req.body.is_published === "true";
 
-        // 1️⃣ Fetch existing case study
+        /* ================= FETCH EXISTING ================= */
+
         const [[existing]] = await db.execute(
             "SELECT cover_image FROM case_studies WHERE id = ?",
             [id]
         );
 
         if (!existing) {
-            return res.status(404).json({ message: "Case study not found" });
+            return res.status(404).json({
+                message: "Case study not found"
+            });
         }
 
-        // 2️⃣ If new image uploaded → delete old image
         let newCoverImage = existing.cover_image;
 
+        /* ================= IMAGE REPLACEMENT ================= */
+
         if (req.file) {
+
+            const oldImage = existing.cover_image;
+
+            // delete old image from cloudinary
+            if (oldImage) {
+
+                try {
+
+                    const parts = oldImage.split("/");
+                    const fileName = parts[parts.length - 1];
+                    const publicId = fileName.split(".")[0];
+
+                    await cloudinary.uploader.destroy(publicId);
+
+                } catch (cloudErr) {
+                    console.error("Old image deletion failed:", cloudErr);
+                }
+
+            }
+
+            // save new image
             newCoverImage = req.file.path;
+
         }
 
-        // 3️⃣ Update DB
+        /* ================= UPDATE DATABASE ================= */
+
         await db.execute(
             `
-      UPDATE case_studies
-      SET title=?, summary=?, content=?, category=?, cover_image=?, is_published=?
-      WHERE id=?
-      `,
+            UPDATE case_studies
+            SET title=?, summary=?, content=?, category=?, cover_image=?, is_published=?
+            WHERE id=?
+            `,
             [
                 title,
                 summary,
@@ -98,10 +134,18 @@ export const updateCaseStudy = async (req, res) => {
             ]
         );
 
-        res.json({ message: "Case study updated successfully" });
+        res.json({
+            message: "Case study updated successfully"
+        });
+
     } catch (err) {
+
         console.error("UPDATE ERROR:", err);
-        res.status(500).json({ message: "Failed to update case study" });
+
+        res.status(500).json({
+            message: "Failed to update case study"
+        });
+
     }
 };
 
@@ -122,6 +166,72 @@ export const togglePublishStatus = async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Failed to toggle publish status" });
+    }
+};
+
+/**
+ * ADMIN: Delete case study
+ * 1. Delete Cloudinary image
+ * 2. Delete DB row
+ */
+export const deleteCaseStudy = async (req, res) => {
+    try {
+
+        const { id } = req.params;
+
+        /* ================= FETCH CASE STUDY ================= */
+
+        const [[caseStudy]] = await db.execute(
+            "SELECT cover_image FROM case_studies WHERE id = ?",
+            [id]
+        );
+
+        if (!caseStudy) {
+            return res.status(404).json({
+                message: "Case study not found"
+            });
+        }
+
+        const imageUrl = caseStudy.cover_image;
+
+        /* ================= DELETE CLOUDINARY IMAGE ================= */
+
+        if (imageUrl) {
+
+            try {
+
+                // extract public_id from Cloudinary URL
+                const parts = imageUrl.split("/");
+                const fileName = parts[parts.length - 1];
+                const publicId = fileName.split(".")[0];
+
+                await cloudinary.uploader.destroy(publicId);
+
+            } catch (cloudErr) {
+                console.error("Cloudinary delete failed:", cloudErr);
+            }
+
+        }
+
+        /* ================= DELETE DB ROW ================= */
+
+        await db.execute(
+            "DELETE FROM case_studies WHERE id = ?",
+            [id]
+        );
+
+        res.json({
+            message: "Case study deleted successfully"
+        });
+
+    } catch (err) {
+
+        console.error("DELETE CASE STUDY ERROR:", err);
+
+        res.status(500).json({
+            message: "Failed to delete case study"
+        });
+
     }
 };
 

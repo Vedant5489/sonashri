@@ -104,6 +104,17 @@ export const updateCaseStudy = async (id, data) => {
     return handleResponse(res);
 };
 
+export const deleteCaseStudy = async (id) => {
+    const res = await fetch(`${API_BASE}/api/admin/case-studies/${id}`, {
+        method: "DELETE",
+        headers: {
+            ...getAuthHeaders(),
+        },
+    });
+
+    return handleResponse(res);
+};
+
 export const toggleCaseStudyPublish = async (id) => {
     const res = await fetch(`${API_BASE}/api/admin/case-studies/${id}/publish`, {
         method: "PATCH",

@@ -1,14 +1,8 @@
 import CaseStudyCard from "./CaseStudyCard";
-import { CASE_STUDY_LAYOUT } from "../config/caseStudiesConfig";
 
 const CaseStudiesGrid = ({ studies }) => {
   return (
-    <div
-      className="case-grid"
-      style={{
-        gridTemplateColumns: `repeat(${CASE_STUDY_LAYOUT.columns}, 1fr)`,
-      }}
-    >
+    <div className="case-grid">
       {studies.map((study) => (
         <CaseStudyCard key={study.id} study={study} />
       ))}

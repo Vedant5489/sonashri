@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import "../styles/adminLogin.css";
+import Navbar from "../../components/Navbar";
 
 const AdminLogin = () => {
   const BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -54,6 +55,8 @@ const AdminLogin = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="admin-login-wrapper">
       <div className="admin-login-overlay">
         <div className="admin-login-left">
@@ -96,6 +99,7 @@ const AdminLogin = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

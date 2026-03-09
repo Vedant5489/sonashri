@@ -24,15 +24,6 @@ app.get("/", (req, res) => {
 app.get("/health", (req, res) => {
     res.status(200).json({ status: "OK" });
 });
-// DATABASE HEALTH CHECK API FOR health check script
-app.get("/db-health", async (req, res) => {
-    try {
-        await db.query("SELECT 1");
-        res.status(200).json({ status: "ok" });
-    } catch (error) {
-        res.status(500).json({ status: "db_error" });
-    }
-});
 
 app.use("/api", cloudinaryTestRoutes);
 

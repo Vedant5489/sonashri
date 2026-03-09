@@ -8,6 +8,7 @@ import {
   createCaseStudy,
   updateCaseStudy,
   toggleCaseStudyPublish,
+  deleteCaseStudy
 } from "../services/adminApi";
 
 const emptyForm = {
@@ -130,6 +131,37 @@ const CaseStudies = () => {
     }
   };
 
+  /* ================= DELETE ================= */
+
+const handleDelete = async (id) => {
+
+  const confirmDelete = window.confirm(
+    "Delete this case study?\n\nThis will permanently remove the case study and its image."
+  );
+
+  if (!confirmDelete) return;
+
+  const loadingToast = toast.loading("Deleting case study...");
+
+  try {
+
+    await deleteCaseStudy(id);
+
+    toast.success("Case study deleted successfully", {
+      id: loadingToast,
+    });
+
+    await loadCaseStudies();
+
+    setSelectedCaseStudy(null);
+
+  } catch {
+    toast.error("Failed to delete case study", {
+      id: loadingToast,
+    });
+  }
+};
+
   return (
     <div className="case-studies">
       {/* ================= HEADER ================= */}
@@ -199,6 +231,13 @@ const CaseStudies = () => {
                       onClick={() => handlePublishToggle(cs.id)}
                     >
                       Toggle Publish
+                    </button>
+
+                    <button
+                      className="btn-danger"
+                      onClick={() => handleDelete(cs.id)}
+                    >
+                      Delete
                     </button>
                   </td>
                 </tr>

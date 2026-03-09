@@ -141,12 +141,45 @@
 /* =========================
    RESPONSIVE
 ========================= */
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 768px) {
+  .offer-section {
+    padding: 4rem 1.4rem;
+  }
+
   .offer-cards {
     grid-template-columns: 1fr;
+    gap: 1.6rem;
+    margin-top: 2.2rem;
   }
 
   .offer-card img {
-    height: 220px;
+    height: 190px;
+  }
+
+  .offer-card-content {
+    padding: 0.9rem 1rem;
+  }
+
+  .offer-card-content h3 {
+    font-size: 1.05rem;
+  }
+
+  .offer-card-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .offer-intro {
+    font-size: 0.95rem;
+    padding: 0 0.4rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .offer-card img {
+    height: 170px;
   }
 }

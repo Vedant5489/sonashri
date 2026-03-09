@@ -1,19 +1,32 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchCaseStudies } from "../../api/caseStudies.api";
-
+import Loader from "../../components/Loader";
 const CaseStudiesSidebar = () => {
   const [studies, setStudies] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
+    setLoading(true);
+
     fetchCaseStudies()
       .then((data) => {
         if (Array.isArray(data)) setStudies(data);
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setLoading(false));
   }, []);
+
+  if (loading) {
+    return (
+      <div className="case-sidebar">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className="case-sidebar">

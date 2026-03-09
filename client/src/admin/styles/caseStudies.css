@@ -146,6 +146,16 @@
   margin-bottom: 20px;
 }
 
+.btn-danger {
+  background: #d11a2a;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #a70f1d;
+}
+
 /* ================= VIEW MODE ================= */
 
 .case-view {

@@ -27,10 +27,6 @@ button {
 }
 
 @media (max-width: 600px) {
-  .case-grid {
-    grid-template-columns: 1fr !important;
-  }
-
   .case-studies-page,
   .case-detail {
     padding: 3rem 1.2rem;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import Loader from "../../components/Loader";
 import { fetchCaseStudyById } from "../../api/caseStudies.api";
 
 const CaseStudyDetail = () => {
@@ -9,15 +10,27 @@ const CaseStudyDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
+
     fetchCaseStudyById(id)
       .then((data) => {
-        setStudy(data || null);
-        setLoading(false);
+        setStudy(data);
       })
-      .catch(() => setLoading(false));
-  }, [id]);
+      .catch(() => {})
+      .finally(() => {
+        setLoading(false);
+      });
 
-  if (loading) return <div className="case-loading">Loading…</div>;
+  }, [id]); // triggers when sidebar navigation changes case study
+
+  if (loading) {
+    return (
+      <div className="case-detail-loader">
+        <Loader />
+      </div>
+    );
+  }
+  
   if (!study) return <div className="case-loading">Select a case study</div>;
 
   return (

@@ -16,18 +16,19 @@ createRoot(document.getElementById("root")).render(
           duration: 3500,
           style: {
             fontSize: "18px",
-            padding: "20px 26px",
-            minWidth: "400px",
+            padding: "18px 22px",
+            width: "auto",
+            maxWidth: "92vw",   // prevents overflow on mobile
             borderRadius: "12px",
-            background: "#1E1E1E",   // Graphite Black
-            color: "#F2F4F6",        // Light Grey
+            background: "#1E1E1E",
+            color: "#F2F4F6",
             boxShadow: "0 12px 32px rgba(0,0,0,0.35)",
             border: "1px solid #2A2A2A",
           },
 
           success: {
             iconTheme: {
-              primary: "#0A6FB5",   // Primary Blue
+              primary: "#0A6FB5",
               secondary: "#F2F4F6",
             },
             style: {
@@ -49,7 +50,7 @@ createRoot(document.getElementById("root")).render(
 
           loading: {
             iconTheme: {
-              primary: "#BFC5CC",   // Accent Silver
+              primary: "#BFC5CC",
               secondary: "#1E1E1E",
             },
             style: {

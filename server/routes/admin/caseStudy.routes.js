@@ -6,6 +6,7 @@ import {
     createCaseStudy,
     updateCaseStudy,
     togglePublishStatus,
+    deleteCaseStudy
 } from "../../controllers/caseStudy.controller.js";
 
 const router = express.Router();
@@ -20,5 +21,6 @@ router.post("/", upload.single("cover_image"), createCaseStudy);
 router.put("/:id", upload.single("cover_image"), updateCaseStudy);
 
 router.patch("/:id/publish", togglePublishStatus);
+router.delete("/:id", deleteCaseStudy);
 
 export default router;
