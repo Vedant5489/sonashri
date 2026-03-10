@@ -1,3 +1,5 @@
+# Stack: Node.js • Express • MySQL • Railway • Cloudinary • Render • React (Vite)
+
 # Backend Infrastructure Documentation
 
 ## Project Overview
