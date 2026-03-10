@@ -273,6 +273,68 @@ Important Notes for Future Developers
 
 Never commit .env or credentials to GitHub.
 
+Original Implementation Notice
+
+This system architecture, backend structure, database schema, and deployment pipeline were designed and implemented as part of the initial development of the Sonashri Engineering & Solutions website.
+
+At the time of deployment, the system was verified to be functioning correctly with the following infrastructure:
+
+Backend hosted on Render
+
+MySQL database hosted on Railway
+
+Media storage managed via Cloudinary
+
+Frontend connected through API endpoints exposed by the backend server
+
+Any modifications made to the codebase, infrastructure configuration, database schema, environment variables, hosting services, or deployment pipeline after the original handover may affect system stability and functionality.
+
+Future developers or maintainers are responsible for validating any changes they introduce.
+
+The original developer cannot guarantee system stability after modifications, migrations, infrastructure changes, or third-party integrations performed by other parties.
+
+System Validity Period
+
+The backend infrastructure and database connectivity supporting the following modules are maintained for a fixed support period:
+
+Case Study Module
+
+Training & Career Form
+
+Admin Panel
+
+Support validity: March 2026 – March 2028
+
+After this period:
+
+Backend maintenance and technical support will no longer be guaranteed.
+
+Dynamic modules depending on backend services may be disabled unless the infrastructure is renewed or maintained by the client or another developer.
+
+The frontend website may continue to remain accessible independently of the backend services.
+
+Handover Responsibility
+
+If the system is transferred to another developer, agency, or organization, the following resources must be handed over by the client:
+
+GitHub repository access
+
+Render service access
+
+Railway database credentials
+
+Cloudinary account credentials
+
+Environment variable configuration
+
+Failure to transfer these credentials may prevent proper system maintenance.
+
+Disclaimer
+
+This documentation is provided to assist future developers in understanding the original system architecture and deployment workflow.
+
+While reasonable effort has been made to ensure clarity and completeness, infrastructure services and platform behaviors may evolve over time. Future maintainers should verify configurations and compatibility with current service documentation.
+
 Always use environment variables for secrets.
 
 Database migrations or schema changes should be documented.
