@@ -1,267 +1,280 @@
-<<<<<<< HEAD
-Sonashri Engineering & Solutions – Website
+Backend Infrastructure Documentation
+Project Overview
 
-This project is the official website for Sonashri Engineering & Solutions.
-It is designed to clearly present services, showcase real work through case studies, and manage enquiries through an admin panel.
-=======
-Skip to content
-Vedant5489
-sonashri
-Repository navigation
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-Settings
-sonashri/
-Go to file
-t
-Vedant5489
-Vedant5489
-Add README for Sonashri Engineering & Solutions website
-b8ded84
-·
-1 minute ago
-sonashri/
-Name Last commit message Last commit date
-client
-Add case studies feature with admin publishing and UI refinements
-5 minutes ago
+This repository contains the backend system and administrative infrastructure for the Sonashri Engineering & Solutions website.
+
+The backend powers dynamic website functionality including:
+
+Case Study management system
+
+Training & Career form submissions
+
+Admin authentication and dashboard
+
+Media storage handling
+
+API endpoints used by the frontend application
+
+The system is built using a Node.js backend architecture with a MySQL database and deployed using modern cloud infrastructure.
+
+This document explains the architecture, hosting services, and deployment pipeline so that the project can be maintained, transferred, or extended by future developers if required.
+
+Technology Stack
+Backend Runtime
+
+Node.js
+
+Express.js
+
+Database
+
+MySQL (Hosted on Railway)
+
+File Storage
+
+Cloudinary
+
+Backend Hosting
+
+Render
+
+Frontend
+
+React (Vite)
+
+System Architecture
+Frontend (React / Vite)
+        │
+        │ API Requests
+        ▼
+Backend Server (Node.js + Express)
+Hosted on Render
+        │
+        ├──────────────► MySQL Database (Railway)
+        │
+        └──────────────► Cloudinary (Media Storage)
+Data Flow
+
+A user interacts with the frontend website.
+
+The frontend sends API requests to the backend server.
+
+The backend processes the request and:
+
+Reads or writes structured data to MySQL (Railway).
+
+Uploads or retrieves media files from Cloudinary.
+
+The backend returns structured responses to the frontend.
+
+Hosting Infrastructure
+Backend Hosting — Render
+
+The backend API server is deployed on Render.
+
+Render is responsible for:
+
+Running the Node.js server
+
+Managing environment variables
+
+Handling backend uptime
+
+Exposing API endpoints used by the frontend
+
+Deployment Flow
+
+Typical deployment pipeline:
+
+Developer pushes code → GitHub repository
+            │
+            ▼
+Render detects update
+            │
+            ▼
+Render builds and deploys Node.js server
+            │
+            ▼
+Backend API becomes live
+Environment Variables (Configured in Render)
+
+Typical required variables:
+
+PORT=
+DATABASE_URL=
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+JWT_SECRET=
+
+These values must be configured inside the Render dashboard and should never be committed to GitHub.
+
+Database — Railway (MySQL)
+
+The application database is hosted using Railway MySQL.
+
+Railway provides:
+
+Managed MySQL database hosting
+
+Secure remote connection
+
+Persistent storage for application data
+
+Database Responsibilities
+
+The database stores:
+
+Case studies
+
+Admin credentials
+
+Training and career form submissions
+
+Any additional structured application data
+
+Connection Format
+
+Example connection string format:
+
+mysql://username:password@host:port/database
+
+Or via environment variables:
+
+DB_HOST=
+DB_PORT=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
+
+The backend uses these credentials to establish a connection to the Railway MySQL instance.
+
+Media Storage — Cloudinary
+
+Cloudinary is used for storing and delivering media assets used by the website.
+
+Typical usage includes:
+
+Case study images
+
+Uploaded media from admin panel
+
+Instead of storing image files directly on the backend server, files are uploaded to Cloudinary and the resulting secure URL is stored in the MySQL database.
+
+Media Upload Flow
+Admin uploads image
+        │
+        ▼
+Backend API receives file
+        │
+        ▼
+File uploaded to Cloudinary
+        │
+        ▼
+Cloudinary returns secure URL
+        │
+        ▼
+URL stored in MySQL database
+Admin System
+
+The admin panel allows administrators to manage dynamic content of the website.
+
+Admin capabilities include:
+
+Creating case studies
+
+Editing case studies
+
+Publishing or unpublishing case studies
+
+Viewing training & career form submissions
+
+The admin panel communicates with backend API endpoints secured with authentication middleware.
+
+Project Structure (Backend)
+
+Typical backend folder structure:
+
 server
-Add case studies feature with admin publishing and UI refinements
-5 minutes ago
-.gitignore
-Remove server node_modules from repo and add gitignore
-3 days ago
-README.md
-Add README for Sonashri Engineering & Solutions website
-1 minute ago
-README.md
-Sonashri Engineering & Solutions – Website
+│
+├── config
+│   ├── database.js
+│   ├── cloudinary.js
+│
+├── controllers
+│
+├── middleware
+│   ├── adminAuth.js
+│
+├── routes
+│   ├── admin
+│
+├── uploads
+│
+├── utils
+│
+└── index.js
+Deployment Checklist
 
-This project is the official website for Sonashri Engineering & Solutions. It is designed to clearly present services, showcase real work through case studies, and manage enquiries through an admin panel.
+If the project is handed over to another developer or organization, the following services must be accessible:
 
-> > > > > > > d02bae3 (Training Form implemented, admin sidebar optimized)
+Required Accounts
 
-The website is fast, clean, and built to scale in the future.
+Render (Backend hosting)
 
-🌐 What This Website Includes
-<<<<<<< HEAD
+Railway (MySQL database)
 
-1. Public Website (For Visitors)
+Cloudinary (Media storage)
 
-=======
+GitHub (Source code)
 
-Public Website (For Visitors)
+Steps for Redeployment
 
-> > > > > > > d02bae3 (Training Form implemented, admin sidebar optimized)
-> > > > > > > This is what normal users and clients see.
+Clone the GitHub repository.
 
-🏠 Home Page
+Install dependencies.
 
-Clean hero section explaining what the company does
+npm install
 
-Services overview
+Configure environment variables.
 
-Latest Case Studies section showing real work
+Ensure database access credentials are valid.
 
-Call-to-action buttons to contact the company
+Deploy backend service to Render.
 
-🛠 Services Pages
+Verify API endpoints and database connectivity.
 
-Separate pages for each service (Product Design, Prototyping, etc.)
+Service Dependency Summary
+Service	Purpose
+Render	Backend hosting
+Railway	MySQL database
+Cloudinary	Media storage
+GitHub	Source code repository
+React (Vite)	Frontend application
+Maintenance Notes
 
-Clear explanation of capabilities
+The backend infrastructure is designed to be:
 
-Structured layout for easy understanding
+Modular
 
-📊 Case Studies (Public)
+Maintainable
 
-Shows real projects done by the company
+Easily deployable
 
-Grid view listing multiple case studies
+Cloud-service independent (services can be replaced if needed)
 
-Clicking a case study opens a detailed page
+If infrastructure changes are required in the future, equivalent alternatives can be used:
 
-Each case study includes:
+Current Service	Possible Alternatives
+Render	AWS, DigitalOcean, Vercel
+Railway	AWS RDS, PlanetScale
+Cloudinary	AWS S3, Firebase Storage
+Important Notes for Future Developers
 
-Title
+Never commit .env or credentials to GitHub.
 
-Summary
+Always use environment variables for secrets.
 
-Image
+Database migrations or schema changes should be documented.
 
-Detailed explanation (formatted nicely)
-
-Only published case studies are visible to visitors
-
-📩 Contact & Training Enquiries
-
-Users can submit training requests
-
-Requests are saved and managed from the admin panel
-
-🔐 Admin Panel (Internal Use)
-
-The admin panel is used by the company team to manage content.
-
-🔑 Admin Login
-
-Secure login for admin users
-
-Access protected routes only after login
-
-📚 Case Studies Management
-
-Admins can:
-
-Create new case studies
-
-Edit existing case studies
-
-Upload cover images
-
-Write detailed content (supports headings & bullet points)
-
-Preview content before saving
-
-Publish or unpublish case studies using a toggle switch
-
-Only published case studies appear on the public website.
-
-📝 Training Requests Management
-
-Admins can:
-
-View all training enquiries
-
-Filter by status (New, Contacted, Converted, Rejected)
-
-Update request status
-
-Directly open Gmail with pre-filled email to contact users
-
-Mobile-friendly card view for easy handling on phones
-
-🎨 Design & User Experience
-
-Clean and professional design
-
-Brand-consistent colors and typography
-
-Smooth animations (fade-ins, transitions)
-
-Fully responsive (works on mobile, tablet, desktop)
-
-No clutter, no unnecessary effects
-
-Focus on clarity and usability
-
-<<<<<<< HEAD
-🧱 Technical Structure (Simple Explanation)
-Frontend (Client)
-=======
-🧱 Technical Structure (Simple Explanation) Frontend (Client)
-
-> > > > > > > d02bae3 (Training Form implemented, admin sidebar optimized)
-
-Built using React
-
-Pages are fast and dynamic
-
-Components reused across the website
-
-Case studies and data loaded from the backend
-
-Main folders:
-
-components/ – Reusable UI parts (Navbar, cards, etc.)
-
-pages/ – Main pages (Home, Case Studies, Contact)
-
-admin/ – Admin panel pages and styles
-
-case-studies/ – Public case studies pages and components
-
-styles/ – Global and page-specific CSS
-
-Backend (Server)
-
-Built using Node.js + Express
-
-Handles:
-
-Case studies data
-
-Training requests
-
-Admin authentication
-
-Serves uploaded images (case study cover images)
-
-Clean separation between public and admin APIs
-
-Main backend features:
-
-Public APIs → used by website visitors
-
-Admin APIs → used only inside admin panel
-
-Secure routes for admin actions
-
-📂 Image & File Handling
-
-Case study images are uploaded and stored on the server
-
-Images are displayed automatically on the website
-
-File names are generated safely to avoid conflicts
-
-🚀 Why This Website Is Built This Way
-
-Easy for clients to understand the company’s work
-
-Easy for the company to update content without developers
-
-Scales well as more services and case studies are added
-
-Clean codebase for long-term maintenance
-
-✅ Current Status
-
-Public website fully functional
-
-Case studies live and dynamic
-
-Admin panel stable and polished
-
-Mobile responsiveness handled
-
-Ready for real client use
-
-📌 Future Improvements (Optional)
-
-SEO enhancements
-
-Analytics integration
-
-Blog section
-
-Multi-admin roles
-
-Content scheduling
-
-🧠 Final Note
-
-<<<<<<< HEAD
-This website is built to look professional, work smoothly, and grow with the business. Nothing is experimental or demo-quality – it is production-ready.
-
-Training Form implemented and admin sidebar optimized.
-
-=======
-This website is built to look professional, work smoothly, and grow with the business. Nothing is experimental or demo-quality — it is production-ready.
-
-> > > > > > > d02bae3 (Training Form implemented, admin sidebar optimized)
+Media files must always be uploaded through Cloudinary to maintain CDN delivery.
