@@ -249,53 +249,48 @@ export const getPublishedCaseStudies = async (req, res) => {
     } catch (err) {
         console.error("CASE STUDIES ERROR:", err);
 
-        const isTimeout =
-            err.code === "ETIMEDOUT" ||
-            err.code === "ESOCKET" ||
-            err.code === "ECONNRESET";
-
-        let failureStage = "UNKNOWN";
-
-        if (err.code === "ETIMEDOUT") {
-            failureStage = "DATABASE_CONNECTION_TIMEOUT";
-        } else if (err.code === "ECONNREFUSED") {
-            failureStage = "DATABASE_CONNECTION_REFUSED";
-        } else if (err.code === "ER_ACCESS_DENIED_ERROR") {
-            failureStage = "DATABASE_AUTHENTICATION";
-        } else if (err.code === "ER_BAD_DB_ERROR") {
-            failureStage = "DATABASE_NOT_FOUND";
-        } else if (err.code === "ER_NO_SUCH_TABLE") {
-            failureStage = "TABLE_NOT_FOUND";
-        } else if (err.code === "ECONNRESET") {
-            failureStage = "CONNECTION_RESET";
-        } else if (err.code === "ESOCKET") {
-            failureStage = "SOCKET_ERROR";
-        }
+        const errorDetails = {
+            name: err?.name,
+            message: err?.message,
+            code: err?.code,
+            errno: err?.errno,
+            syscall: err?.syscall,
+            address: err?.address,
+            port: err?.port,
+            fatal: err?.fatal,
+            stack: err?.stack,
+            cause: err?.cause ? {
+                name: err.cause.name,
+                message: err.cause.message,
+                code: err.cause.code,
+                errno: err.cause.errno,
+                syscall: err.cause.syscall,
+                address: err.cause.address,
+                port: err.cause.port,
+                stack: err.cause.stack
+            } : null,
+            errors: err.errors?.map(e => ({
+                message: e.message,
+                code: e.code,
+                errno: e.errno,
+                syscall: e.syscall,
+                address: e.address,
+                port: e.port
+            })) ?? null
+        };
 
         res.status(500).json({
             message: "Failed to fetch case studies",
-
             diagnostics: {
-                failureStage,
-                isTimeout,
-
-                error: {
-                    name: err.name,
-                    message: err.message,
-                    code: err.code,
-                    errno: err.errno,
-                    syscall: err.syscall,
-                    address: err.address,
-                    port: err.port,
-                    fatal: err.fatal
-                },
-
+                failureStage: err.code === "ETIMEDOUT"
+                    ? "DATABASE_CONNECTION_TIMEOUT"
+                    : "UNKNOWN",
+                error: errorDetails,
                 database: {
                     host: process.env.DB_HOST,
                     port: process.env.DB_PORT,
                     name: process.env.DB_NAME
                 },
-
                 timestamp: new Date().toISOString()
             }
         });
