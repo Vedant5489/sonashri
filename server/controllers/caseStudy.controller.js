@@ -247,16 +247,19 @@ export const getPublishedCaseStudies = async (req, res) => {
         res.json(rows);
 
     } catch (err) {
-        console.error("❌ Failed to fetch published case studies:", err);
+        console.error("CASE STUDIES ERROR:", err);
 
         res.status(500).json({
             message: "Failed to fetch case studies",
-            error: err.message,
-            code: err.code,
-            errno: err.errno,
-            sqlState: err.sqlState,
-            syscall: err.syscall,
-            fatal: err.fatal
+            diagnostics: {
+                name: err.name,
+                message: err.message,
+                code: err.code,
+                errno: err.errno,
+                syscall: err.syscall,
+                fatal: err.fatal,
+                stack: err.stack?.split("\n").slice(0, 3)
+            }
         });
     }
 };
