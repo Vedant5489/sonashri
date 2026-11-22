@@ -243,10 +243,21 @@ export const getPublishedCaseStudies = async (req, res) => {
         const [rows] = await db.execute(
             "SELECT * FROM case_studies WHERE is_published = TRUE ORDER BY created_at DESC"
         );
+
         res.json(rows);
+
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: "Failed to fetch case studies" });
+        console.error("❌ Failed to fetch published case studies:", err);
+
+        res.status(500).json({
+            message: "Failed to fetch case studies",
+            error: err.message,
+            code: err.code,
+            errno: err.errno,
+            sqlState: err.sqlState,
+            syscall: err.syscall,
+            fatal: err.fatal
+        });
     }
 };
 
