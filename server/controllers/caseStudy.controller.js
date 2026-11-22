@@ -249,16 +249,54 @@ export const getPublishedCaseStudies = async (req, res) => {
     } catch (err) {
         console.error("CASE STUDIES ERROR:", err);
 
+        const isTimeout =
+            err.code === "ETIMEDOUT" ||
+            err.code === "ESOCKET" ||
+            err.code === "ECONNRESET";
+
+        let failureStage = "UNKNOWN";
+
+        if (err.code === "ETIMEDOUT") {
+            failureStage = "DATABASE_CONNECTION_TIMEOUT";
+        } else if (err.code === "ECONNREFUSED") {
+            failureStage = "DATABASE_CONNECTION_REFUSED";
+        } else if (err.code === "ER_ACCESS_DENIED_ERROR") {
+            failureStage = "DATABASE_AUTHENTICATION";
+        } else if (err.code === "ER_BAD_DB_ERROR") {
+            failureStage = "DATABASE_NOT_FOUND";
+        } else if (err.code === "ER_NO_SUCH_TABLE") {
+            failureStage = "TABLE_NOT_FOUND";
+        } else if (err.code === "ECONNRESET") {
+            failureStage = "CONNECTION_RESET";
+        } else if (err.code === "ESOCKET") {
+            failureStage = "SOCKET_ERROR";
+        }
+
         res.status(500).json({
             message: "Failed to fetch case studies",
+
             diagnostics: {
-                name: err.name,
-                message: err.message,
-                code: err.code,
-                errno: err.errno,
-                syscall: err.syscall,
-                fatal: err.fatal,
-                stack: err.stack?.split("\n").slice(0, 3)
+                failureStage,
+                isTimeout,
+
+                error: {
+                    name: err.name,
+                    message: err.message,
+                    code: err.code,
+                    errno: err.errno,
+                    syscall: err.syscall,
+                    address: err.address,
+                    port: err.port,
+                    fatal: err.fatal
+                },
+
+                database: {
+                    host: process.env.DB_HOST,
+                    port: process.env.DB_PORT,
+                    name: process.env.DB_NAME
+                },
+
+                timestamp: new Date().toISOString()
             }
         });
     }
