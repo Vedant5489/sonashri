@@ -5,7 +5,6 @@ export const fetchCaseStudies = async () => {
     if (!res.ok) throw new Error("Failed to fetch case studies");
     return res.json();
 };
-
 export const fetchCaseStudyById = async (id) => {
     const res = await fetch(`${BASE_URL}/api/case-studies/${id}`);
     if (!res.ok) throw new Error("Failed to fetch case study");
